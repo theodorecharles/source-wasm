@@ -1,0 +1,7 @@
+.audit/
+.work/
+build/
+data/
+*.log
+.DS_Store
+

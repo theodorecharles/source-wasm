@@ -1,0 +1,85 @@
+{
+  "namespace": "source-family",
+  "version": "steam-build-19307283-audit-v1",
+  "variants": {
+    "hl2": {
+      "namespace": "source-hl2-loader-audit",
+      "version": "steam-build-19307283-audit-v1",
+      "files": [
+        {
+          "key": "gameinfo",
+          "name": "gameinfo.txt",
+          "path": "hl2/gameinfo.txt",
+          "size": 2846,
+          "magic": "\"GameInf",
+          "sha256": "358a4ebfe6d912e84ef779e11ff15795da529eeb856ff58207bf733f752d22af"
+        },
+        {
+          "key": "steam-inf",
+          "name": "steam.inf",
+          "path": "hl2/steam.inf",
+          "size": 111,
+          "magic": "PatchVer",
+          "sha256": "ad248ce31ae11d13981b102b8ce7e1b781221af6132ec52016598f8f105b5853"
+        },
+        {
+          "key": "hl2-pak-dir",
+          "name": "hl2_pak_dir.vpk",
+          "path": "hl2/hl2_pak_dir.vpk",
+          "size": 7827,
+          "magic": [52, 18, 170, 85],
+          "sha256": "5b61d6ba33bc4ee3383e4b25a02c7d07d2e2498ad20aaf145d24e49503204e64"
+        },
+        {
+          "key": "hl2-pak-000",
+          "name": "hl2_pak_000.vpk",
+          "path": "hl2/hl2_pak_000.vpk",
+          "size": 8525197,
+          "magic": "HLDEMO",
+          "sha256": "edd6cc4caea375ea189f44cf02581d6f9d62dbd3c3ec142d0c91a265e58bcdc5"
+        },
+        {
+          "key": "hl2-misc-dir",
+          "name": "hl2_misc_dir.vpk",
+          "path": "hl2/hl2_misc_dir.vpk",
+          "size": 718054,
+          "magic": [52, 18, 170, 85],
+          "sha256": "a42bca25a56de84950dd5f5fc5562401a5a776fc031a892e9fed734e635f55a4"
+        },
+        {
+          "key": "hl2-textures-dir",
+          "name": "hl2_textures_dir.vpk",
+          "path": "hl2/hl2_textures_dir.vpk",
+          "size": 224277,
+          "magic": [52, 18, 170, 85],
+          "sha256": "a523334b897382fc59755036bb7502f284e39bff4800282c9d1a4b1646e20871"
+        },
+        {
+          "key": "hl2-sound-misc-dir",
+          "name": "hl2_sound_misc_dir.vpk",
+          "path": "hl2/hl2_sound_misc_dir.vpk",
+          "size": 127659,
+          "magic": [52, 18, 170, 85],
+          "sha256": "9405b84a78aac4d974e2c56f18ff12ade41d702782f262de4e8251bde8ec50d1"
+        },
+        {
+          "key": "hl2-sound-vo-english-dir",
+          "name": "hl2_sound_vo_english_dir.vpk",
+          "path": "hl2/hl2_sound_vo_english_dir.vpk",
+          "size": 97210,
+          "magic": [52, 18, 170, 85],
+          "sha256": "d049e603d4c919cebfd5d53188ac6b874d1ba84a23eb17f7803b570fbdd34d10"
+        },
+        {
+          "key": "platform-misc-dir",
+          "name": "platform_misc_dir.vpk",
+          "path": "platform/platform_misc_dir.vpk",
+          "size": 15065,
+          "magic": [52, 18, 170, 85],
+          "sha256": "a33f4fb3c60a1d30c03a8c2a7ef68e83579e51ba0362f8f7e217dc5d43e2a1cc"
+        }
+      ]
+    }
+  }
+}
+

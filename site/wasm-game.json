@@ -1,0 +1,54 @@
+{
+  "id": "source-family",
+  "engine": "Source 1 legal boundary",
+  "kicker": "Source WASM",
+  "description": "Owner-data and WebAssembly boundary audit. No Source engine runtime is bundled.",
+  "defaultVariant": "hl2",
+  "preferencesNamespace": "source-wasm",
+  "adapter": "/game-adapter.js",
+  "displayMode": "16:9",
+  "canvasWidth": 1280,
+  "canvasHeight": 720,
+  "pixelated": false,
+  "pointerLock": false,
+  "fullscreen": false,
+  "identity": false,
+  "graphics": false,
+  "advanced": false,
+  "theme": {
+    "accent": "#dc5c24",
+    "accentStrong": "#f4a261",
+    "panel": "#121416",
+    "text": "#f4efe8"
+  },
+  "variants": {
+    "hl2": {
+      "title": "Half-Life 2",
+      "shortTitle": "HL2",
+      "description": "Still in development — validates owner files and an engine-free WASM boundary; it does not launch Half-Life 2.",
+      "loadingTitle": "Checking the Half-Life 2 boundary…",
+      "provisioningText": "Install the exact audited Half-Life 2 owner files into this container once to verify the loader milestone.",
+      "icon": "/source-family.svg",
+      "iconPixelated": false,
+      "pwa": {
+        "id": "/?game=hl2",
+        "name": "Half-Life 2 WASM boundary",
+        "shortName": "HL2 WASM",
+        "description": "Still-in-development legal Source engine boundary and owner-data loader.",
+        "startUrl": "/?game=hl2",
+        "themeColor": "#dc5c24",
+        "backgroundColor": "#101214",
+        "orientation": "landscape",
+        "icons": [
+          {
+            "src": "/source-family.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+          }
+        ]
+      }
+    }
+  }
+}
+
