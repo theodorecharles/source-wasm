@@ -13,7 +13,7 @@
     }));
   }
 
-  function drawBoundary(context, entries) {
+  function drawBoundary(context) {
     const canvas = context.elements.canvas;
     const drawing = canvas.getContext('2d');
     drawing.fillStyle = '#101214';
@@ -23,8 +23,8 @@
     drawing.fillText('Source WASM boundary verified', 72, 110);
     drawing.fillStyle = '#f4efe8';
     drawing.font = '26px system-ui, sans-serif';
-    drawing.fillText(`${entries.length} exact game-data files loaded from /data and cached privately.`, 72, 175);
-    drawing.fillText('The official SDK does not contain the Source engine runtime.', 72, 222);
+    drawing.fillText('The diagnostic module completed successfully.', 72, 175);
+    drawing.fillText('The published SDK does not contain the Source engine runtime.', 72, 222);
     drawing.fillStyle = '#b7b0a7';
     drawing.font = '22px ui-monospace, monospace';
     drawing.fillText('Status: Still in development', 72, 300);
@@ -52,27 +52,32 @@
     async start(context) {
       engineState = 'loading';
       context.setEngineState('loading');
-      context.setLoading('Loading exact game files…', 'Container data will be restored from this browser cache after the first load.', 5);
-      const loaded = await context.dataClient.load(ownerData, {
-        onProgress(detail) {
-          const index = Math.max(0, Number(detail.index) || 0);
-          const total = Math.max(1, Number(detail.total) || manifest.files.length);
-          const progress = 5 + Math.round(((index + (detail.phase === 'cached' || detail.phase === 'restored' ? 1 : 0.4)) / total) * 80);
-          context.setLoading(`Checking ${detail.key || 'game data'}…`, detail.phase || '', progress);
-        }
-      });
-      context.setLoading('Executing the source boundary module…', 'This module deliberately contains no Valve engine code.', 90);
-      const response = await fetch('/source-boundary.wasm', { cache: 'no-cache' });
-      if (!response.ok) throw new Error(`Boundary module failed with HTTP ${response.status}.`);
-      const result = await WebAssembly.instantiateStreaming(response, {});
-      const exports = result.instance.exports;
-      if (exports.source_wasm_boundary_version() !== EXPECTED_BOUNDARY) throw new Error('Unexpected Source WASM boundary ABI.');
-      if (exports.source_wasm_has_engine() !== 0) throw new Error('The diagnostic module falsely reported an engine.');
-      engineState = 'crashed';
-      context.showRuntime('crashed');
-      drawBoundary(context, loaded.entries);
-      context.log(`[source-wasm] Verified ${loaded.entries.length} game files and diagnostic WASM ABI 0x${EXPECTED_BOUNDARY.toString(16)}.`);
-      context.log('[source-wasm] Half-Life 2 cannot launch: the published SDK does not contain a full Source 1 engine.');
+      try {
+        context.setLoading('Loading required game files…', '', 5);
+        const loaded = await context.dataClient.load(ownerData, {
+          onProgress(detail) {
+            const index = Math.max(0, Number(detail.index) || 0);
+            const total = Math.max(1, Number(detail.total) || manifest.files.length);
+            const progress = 5 + Math.round(((index + (detail.phase === 'cached' || detail.phase === 'restored' ? 1 : 0.4)) / total) * 80);
+            context.setLoading(`Checking ${detail.key || 'game data'}…`, detail.phase || '', progress);
+          }
+        });
+        context.setLoading('Executing the source boundary module…', '', 90);
+        const response = await fetch('/source-boundary.wasm', { cache: 'no-cache' });
+        if (!response.ok) throw new Error(`Boundary module failed with HTTP ${response.status}.`);
+        const result = await WebAssembly.instantiateStreaming(response, {});
+        const exports = result.instance.exports;
+        if (exports.source_wasm_boundary_version() !== EXPECTED_BOUNDARY) throw new Error('Unexpected Source WASM boundary ABI.');
+        if (exports.source_wasm_has_engine() !== 0) throw new Error('The diagnostic module falsely reported an engine.');
+        engineState = 'crashed';
+        context.showRuntime('crashed');
+        drawBoundary(context);
+        context.log(`[source-wasm] Verified ${loaded.entries.length} game files and diagnostic WASM ABI 0x${EXPECTED_BOUNDARY.toString(16)}.`);
+        context.log('[source-wasm] Half-Life 2 cannot launch: the published SDK does not contain a full Source 1 engine.');
+      } catch (error) {
+        engineState = 'crashed';
+        throw error;
+      }
     },
 
     readEngineState() {
