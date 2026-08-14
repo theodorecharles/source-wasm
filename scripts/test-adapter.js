@@ -74,7 +74,9 @@ const context = {
   assert.equal(loadedPolicy, createdPolicy);
   assert.equal(adapter.readEngineState(), 'crashed', 'the diagnostic must never claim menu or gameplay');
   assert.deepEqual(transitions, ['loading', 'crashed']);
-  assert.ok(loading.some(detail => String(detail[0]).includes('source boundary module')));
+  assert.ok(loading.some(detail => String(detail[0]).includes('Half-Life 2')));
+  assert.doesNotMatch(loading.flat().join('\n'), /files?|data|cache|container|browser|mount|verif|directory|folder|path|module/i,
+    'normal loading copy must remain title-focused');
   assert.ok(drawn.some(text => text === 'Engine present: no'));
   assert.ok(drawn.some(text => text.startsWith('Status: Still in development')));
   assert.doesNotMatch(drawn.join('\n'), /game[- ]data files|cached|container|directory|folder/i,

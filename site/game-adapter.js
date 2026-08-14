@@ -53,16 +53,16 @@
       engineState = 'loading';
       context.setEngineState('loading');
       try {
-        context.setLoading('Loading required game files…', '', 5);
+        context.setLoading('Preparing Half-Life 2 status…', '', 5);
         const loaded = await context.dataClient.load(ownerData, {
           onProgress(detail) {
             const index = Math.max(0, Number(detail.index) || 0);
             const total = Math.max(1, Number(detail.total) || manifest.files.length);
             const progress = 5 + Math.round(((index + (detail.phase === 'cached' || detail.phase === 'restored' ? 1 : 0.4)) / total) * 80);
-            context.setLoading(`Checking ${detail.key || 'game data'}…`, detail.phase || '', progress);
+            context.setLoading('Preparing Half-Life 2 status…', '', progress);
           }
         });
-        context.setLoading('Executing the source boundary module…', '', 90);
+        context.setLoading('Preparing Half-Life 2 status…', '', 90);
         const response = await fetch('/source-boundary.wasm', { cache: 'no-cache' });
         if (!response.ok) throw new Error(`Boundary module failed with HTTP ${response.status}.`);
         const result = await WebAssembly.instantiateStreaming(response, {});
