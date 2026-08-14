@@ -6,15 +6,15 @@
     "version": "0.7.1",
     "commit": "9359fb186399d0c608cbcd063f7e6fd03eb7c210"
   },
-  "officialSourceSdkAudit": {
+  "officialSourceSdk": {
     "repository": "https://github.com/ValveSoftware/source-sdk-2013.git",
     "commit": "22288b919617be6c8ca3cefd7cca979cbb39a88c",
-    "use": "Provenance and published-source audit only; no SDK source is copied into this repository or image."
+    "use": "Source surface comparison; not a build input."
   },
-  "rejectedReference": {
+  "excludedReference": {
     "repository": "https://github.com/Mxthy/hl2-webxr.git",
     "commit": "976342d",
-    "reason": "Its own documentation and workflow identify a TF2 leak-derived Source engine fork. No code, patch, binary, page, or asset was imported."
+    "reason": "Its documentation and workflow identify a TF2 leak-derived engine fork; not a build input."
   },
   "gameDataAudit": {
     "steamAppId": 220,

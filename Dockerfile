@@ -5,8 +5,8 @@ FROM ${FRAMEWORK_IMAGE}
 
 ARG GAME_VARIANT=suite
 ARG VCS_REF=local
-LABEL org.opencontainers.image.title="Source WASM published-source checkpoint" \
-      org.opencontainers.image.description="Retail-free Half-Life 2 data loader and diagnostic WASM boundary; not a playable Source engine" \
+LABEL org.opencontainers.image.title="Source WASM development checkpoint" \
+      org.opencontainers.image.description="Half-Life 2 data-path and diagnostic WebAssembly development checkpoint" \
       org.opencontainers.image.revision="$VCS_REF" \
       org.opencontainers.image.licenses="MIT"
 
