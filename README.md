@@ -48,7 +48,8 @@ from a current Steam Half-Life 2 installation. The server writes only validated
 files beneath `/data`. It never exposes `/data` as a static directory; the
 framework makes allowlisted same-origin file endpoints available only after the
 whole manifest is ready. Each browser then keeps its own validated, versioned
-IndexedDB cache.
+IndexedDB cache; cached entries are rechecked for exact size and file signature
+before use.
 
 This repository authors no `index.html`, CSS, service worker, or web manifest.
 Those are supplied by wasm-game-framework. Its only public icon is original

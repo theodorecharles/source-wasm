@@ -33,6 +33,7 @@ for (const file of hl2.files) {
 const bytes = fs.readFileSync(path.join(root, 'source-boundary.wasm'));
 const adapter = fs.readFileSync(path.join(root, 'game-adapter.js'), 'utf8');
 if (!adapter.includes('context.dataClient.load(ownerData')) throw new Error('adapter bypasses canonical container-to-IndexedDB loader');
+if (adapter.includes('validateCached: false')) throw new Error('cached game data must retain browser-side validation');
 WebAssembly.instantiate(bytes, {}).then(({ instance }) => {
   if (instance.exports.source_wasm_boundary_version() !== 0x000701) throw new Error('wrong boundary ABI');
   if (instance.exports.source_wasm_has_engine() !== 0) throw new Error('diagnostic falsely claims an engine');

@@ -9,8 +9,7 @@
   function filePolicies(value) {
     return value.files.map(file => ({
       ...file,
-      mountName: file.path,
-      validateCached: false
+      mountName: file.path
     }));
   }
 
