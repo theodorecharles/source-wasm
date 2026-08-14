@@ -23,7 +23,7 @@ const config = JSON.parse(fs.readFileSync(path.join(root, 'wasm-game.json')));
 if (Object.keys(config.variants).join(',') !== 'hl2') throw new Error('only the honest HL2 boundary variant may be published');
 if (config.identity !== false || config.graphics !== false || config.pointerLock !== false) throw new Error('diagnostic must not expose gameplay controls');
 const framework = JSON.parse(fs.readFileSync(path.join(root, 'wasm-game-framework.json')));
-if (framework.version !== '0.7.1') throw new Error(`framework ${framework.version}`);
+if (framework.version !== '0.7.2') throw new Error(`framework ${framework.version}`);
 const data = JSON.parse(fs.readFileSync(path.join(root, 'wasm-game-data.json')));
 const hl2 = data.variants.hl2;
 if (!hl2 || hl2.files.length !== 9) throw new Error('expected nine exact game-data audit files');

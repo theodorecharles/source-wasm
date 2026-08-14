@@ -21,7 +21,7 @@ test_image() {
   grep -q '/shared-shell/wasm-game-framework.css' <<<"${body}"
   grep -q '/shared-shell/wasm-game-bootstrap.js' <<<"${body}"
   ! grep -qi 'wolfwasm' <<<"${body}"
-  [[ "$(curl -fsS "http://127.0.0.1:${port}/wasm-game-framework.json" | node -pe 'JSON.parse(fs.readFileSync(0)).version')" == "0.7.1" ]]
+  [[ "$(curl -fsS "http://127.0.0.1:${port}/wasm-game-framework.json" | node -pe 'JSON.parse(fs.readFileSync(0)).version')" == "0.7.2" ]]
   [[ "$(curl -fsS "http://127.0.0.1:${port}/wasm-game-config.js" | sed -n 's/.*= "\([^"]*\)";.*/\1/p')" == "${expected_variant}" ]]
   [[ "$(curl -fsS "http://127.0.0.1:${port}/app.webmanifest?variant=hl2" | node -pe 'JSON.parse(fs.readFileSync(0)).short_name')" == "HL2 WASM" ]]
   headers="$(curl -fsSI "http://127.0.0.1:${port}/source-boundary.wasm")"
