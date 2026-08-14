@@ -1,4 +1,4 @@
-# Provenance and legal boundary
+# Provenance and source availability
 
 Status: **Still in development**
 
@@ -32,14 +32,13 @@ project imports no source, patch, binary, page, or artwork from it.
 
 Counter-Strike: Source is not included. Valve's official Source SDK 2013 does
 not provide CS:S game code or the full Source engine. Adding a title selector
-or image without an independently redistributable engine and game-code basis
+or image without an independently distributable engine and game-code basis
 would be a false playability claim.
 
-## Owner data
+## Required game data
 
-`wasm-game-data.json` records a deliberately small, exact subset from the
-owner's Steam Half-Life 2 build `19307283`. It exercises `/data` provisioning,
+`wasm-game-data.json` records a deliberately small, exact subset from Steam
+Half-Life 2 build `19307283`. It exercises `/data` provisioning,
 SHA-256 validation, same-origin delivery, and the framework's IndexedDB cache.
 Those files are not present in Git, the Docker build context, the public site,
-or either image. They remain owner-supplied under `/data`.
-
+or either image. The administrator supplies them to persistent `/data`.

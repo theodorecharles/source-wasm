@@ -1,7 +1,5 @@
 .git
 .audit
 .work
-build
 data
 *.log
-

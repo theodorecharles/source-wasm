@@ -7,13 +7,13 @@ isolated framework checkout at that exact release. Current status:
 
 The current executable milestone is intentionally narrow and honest: a small
 original WebAssembly diagnostic runs after the container validates nine exact
-files from the owner's Half-Life 2 Steam installation and the browser restores
+files from a Half-Life 2 Steam installation and the browser restores
 or creates its private IndexedDB cache. It does **not** run Half-Life 2.
 
 The official Valve Source SDK 2013 publishes game/mod code but depends on the
 installed Source SDK Base 2013 runtime. It does not publish a complete Source
-engine that can be legally built into a standalone web client. Counter-Strike:
-Source is therefore not included. See [PROVENANCE.md](PROVENANCE.md).
+engine. Counter-Strike: Source is therefore not included. See
+[PROVENANCE.md](PROVENANCE.md).
 
 ## Build
 
@@ -22,7 +22,7 @@ checkout is `/home/ted/emsdk`; override it with `SOURCE_WASM_EMSDK`.
 
 ```bash
 ./scripts/build-web.sh
-./scripts/audit-owner-data.sh
+./scripts/audit-game-data.sh
 ./scripts/build-docker.sh
 ./scripts/test-http.sh
 ```
@@ -34,9 +34,8 @@ local/source-wasm:dev
 local/source-wasm:hl2-dev
 ```
 
-The suite currently has one honest variant. It exists now so another title is
-added only when a legitimate engine/game-code basis is found, without changing
-the deployment contract.
+The suite currently has one variant. It preserves the deployment contract for
+future titles whose engine and game-code sources pass the provenance audit.
 
 ## Run
 

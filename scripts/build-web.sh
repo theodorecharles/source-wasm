@@ -55,4 +55,4 @@ metadata_dir="$(mktemp -d -t source-wasm-framework.XXXXXX)"
 install -m 0644 "${metadata_dir}/wasm-game-framework.json" "${web_dir}/wasm-game-framework.json"
 
 "${repo_root}/scripts/test-static.sh" "${web_dir}"
-printf 'Built retail-free Source WASM legal-boundary checkpoint at %s\n' "${web_dir}"
+printf 'Built retail-free Source WASM published-source checkpoint at %s\n' "${web_dir}"

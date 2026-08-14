@@ -19,5 +19,4 @@ for (const rule of manifest.files) {
 }
 NODE
 
-echo "owner-data audit passed; no file was copied"
-
+echo "game-data audit passed; no file was copied"

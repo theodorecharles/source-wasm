@@ -24,8 +24,8 @@
     drawing.fillText('Source WASM boundary verified', 72, 110);
     drawing.fillStyle = '#f4efe8';
     drawing.font = '26px system-ui, sans-serif';
-    drawing.fillText(`${entries.length} exact owner files loaded from /data and cached privately.`, 72, 175);
-    drawing.fillText('No redistributable Source engine runtime is available in the official SDK.', 72, 222);
+    drawing.fillText(`${entries.length} exact game-data files loaded from /data and cached privately.`, 72, 175);
+    drawing.fillText('The official SDK does not contain the Source engine runtime.', 72, 222);
     drawing.fillStyle = '#b7b0a7';
     drawing.font = '22px ui-monospace, monospace';
     drawing.fillText('Status: Still in development', 72, 300);
@@ -36,35 +36,32 @@
   globalThis.WasmGameAdapter = {
     async init(context) {
       const root = await fetch('/wasm-game-data.json', { cache: 'no-store' }).then(response => {
-        if (!response.ok) throw new Error(`Owner-data policy failed with HTTP ${response.status}.`);
+        if (!response.ok) throw new Error(`Game-data policy failed with HTTP ${response.status}.`);
         return response.json();
       });
       manifest = root.variants[context.variant];
-      if (!manifest) throw new Error(`No owner-data policy exists for ${context.variant}.`);
+      if (!manifest) throw new Error(`No game-data policy exists for ${context.variant}.`);
       ownerData = context.framework.createOwnerDataSet({
         namespace: manifest.namespace,
         version: manifest.version,
         files: filePolicies(manifest)
       });
-      context.log('[source-wasm] Legal boundary: official Source SDK 2013 has no Source engine runtime.');
-      context.log('[source-wasm] This adapter will validate owner data and execute only an original diagnostic module.');
+      context.log('[source-wasm] Published-source boundary: Source SDK 2013 has no Source engine runtime.');
+      context.log('[source-wasm] This adapter validates required game data and executes an original diagnostic module.');
     },
 
     async start(context) {
       engineState = 'loading';
       context.setEngineState('loading');
-      context.setLoading('Loading exact owner files…', 'Container data will be restored from this browser cache after the first load.', 5);
-      const loaded = await ownerData.load(
-        policy => context.dataClient.load(policy.key),
-        {
-          onProgress(detail) {
-            const index = Math.max(0, Number(detail.index) || 0);
-            const total = Math.max(1, Number(detail.total) || manifest.files.length);
-            const progress = 5 + Math.round(((index + (detail.phase === 'cached' || detail.phase === 'restored' ? 1 : 0.4)) / total) * 80);
-            context.setLoading(`Checking ${detail.key || 'owner data'}…`, detail.phase || '', progress);
-          }
+      context.setLoading('Loading exact game files…', 'Container data will be restored from this browser cache after the first load.', 5);
+      const loaded = await context.dataClient.load(ownerData, {
+        onProgress(detail) {
+          const index = Math.max(0, Number(detail.index) || 0);
+          const total = Math.max(1, Number(detail.total) || manifest.files.length);
+          const progress = 5 + Math.round(((index + (detail.phase === 'cached' || detail.phase === 'restored' ? 1 : 0.4)) / total) * 80);
+          context.setLoading(`Checking ${detail.key || 'game data'}…`, detail.phase || '', progress);
         }
-      );
+      });
       context.setLoading('Executing the source boundary module…', 'This module deliberately contains no Valve engine code.', 90);
       const response = await fetch('/source-boundary.wasm', { cache: 'no-cache' });
       if (!response.ok) throw new Error(`Boundary module failed with HTTP ${response.status}.`);
@@ -75,8 +72,8 @@
       engineState = 'crashed';
       context.showRuntime('crashed');
       drawBoundary(context, loaded.entries);
-      context.log(`[source-wasm] Verified ${loaded.entries.length} owner files and diagnostic WASM ABI 0x${EXPECTED_BOUNDARY.toString(16)}.`);
-      context.log('[source-wasm] Half-Life 2 cannot launch: Valve does not publish a redistributable full Source 1 engine.');
+      context.log(`[source-wasm] Verified ${loaded.entries.length} game files and diagnostic WASM ABI 0x${EXPECTED_BOUNDARY.toString(16)}.`);
+      context.log('[source-wasm] Half-Life 2 cannot launch: the published SDK does not contain a full Source 1 engine.');
     },
 
     readEngineState() {
@@ -84,4 +81,3 @@
     }
   };
 })();
-

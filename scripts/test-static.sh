@@ -26,11 +26,13 @@ const framework = JSON.parse(fs.readFileSync(path.join(root, 'wasm-game-framewor
 if (framework.version !== '0.7.1') throw new Error(`framework ${framework.version}`);
 const data = JSON.parse(fs.readFileSync(path.join(root, 'wasm-game-data.json')));
 const hl2 = data.variants.hl2;
-if (!hl2 || hl2.files.length !== 9) throw new Error('expected nine exact owner-data audit files');
+if (!hl2 || hl2.files.length !== 9) throw new Error('expected nine exact game-data audit files');
 for (const file of hl2.files) {
   if (!file.sha256 || !/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size)) throw new Error(`weak policy ${file.key}`);
 }
 const bytes = fs.readFileSync(path.join(root, 'source-boundary.wasm'));
+const adapter = fs.readFileSync(path.join(root, 'game-adapter.js'), 'utf8');
+if (!adapter.includes('context.dataClient.load(ownerData')) throw new Error('adapter bypasses canonical container-to-IndexedDB loader');
 WebAssembly.instantiate(bytes, {}).then(({ instance }) => {
   if (instance.exports.source_wasm_boundary_version() !== 0x000701) throw new Error('wrong boundary ABI');
   if (instance.exports.source_wasm_has_engine() !== 0) throw new Error('diagnostic falsely claims an engine');
@@ -49,4 +51,3 @@ for forbidden in index.html '*.css' service-worker.js app.webmanifest; do
 done
 ! rg -n -i 'nillerusr|weliveinhell|tf2 leak|source-engine-2007' "${web_dir}"
 echo "static contract passed"
-
