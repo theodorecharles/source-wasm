@@ -1,7 +1,7 @@
 # Source WASM
 
 Source WASM is a Source 1 engine-family browser project using
-wasm-game-framework 0.7.5 at immutable commit `11b9af4`. Builds create an
+wasm-game-framework 0.7.6 at immutable commit `e617f09`. Builds create an
 isolated framework checkout at that exact release. Current status:
 **Still in development**.
 

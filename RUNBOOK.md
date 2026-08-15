@@ -4,7 +4,7 @@ Status: **Still in development**
 
 ## What exists
 
-- A canonical wasm-game-framework 0.7.5 suite/locked deployment contract.
+- A canonical wasm-game-framework 0.7.6 suite/locked deployment contract.
 - Exact required-file validation into `/data` and browser IndexedDB caching.
 - A visible original diagnostic WASM module proving the toolchain and boundary.
 - Static, Docker, HTTP range, PWA, security-header, and inaccessible-`/data`
