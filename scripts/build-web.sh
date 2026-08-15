@@ -4,13 +4,13 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 framework_source_dir="${SOURCE_WASM_FRAMEWORK_DIR:-${repo_root}/../wasm-game-framework}"
 web_dir="${SOURCE_WASM_WEB_DIR:-${repo_root}/build/web}"
-expected_version="0.9.1"
-expected_commit="68bfbd1dbc0104084c7760e486b7437d4c7bb90e"
+expected_version="0.9.2"
+expected_commit="53bc7e6eeef1ae35dcf3b25dea4e3ec0ab46726f"
 
 actual_version="$(git -C "${framework_source_dir}" show "${expected_commit}:package.json" | node -pe 'JSON.parse(fs.readFileSync(0)).version')"
-actual_commit="$(git -C "${framework_source_dir}" rev-parse 'v0.9.1^{}')"
+actual_commit="$(git -C "${framework_source_dir}" rev-parse 'v0.9.2^{}')"
 [[ "${actual_version}" == "${expected_version}" ]] || { echo "expected framework ${expected_version}, found ${actual_version}" >&2; exit 1; }
-[[ "${actual_commit}" == "${expected_commit}" ]] || { echo "framework v0.9.1 resolves to ${actual_commit}, expected ${expected_commit}" >&2; exit 1; }
+[[ "${actual_commit}" == "${expected_commit}" ]] || { echo "framework v0.9.2 resolves to ${actual_commit}, expected ${expected_commit}" >&2; exit 1; }
 
 framework_parent="$(mktemp -d -t source-wasm-framework-checkout.XXXXXX)"
 framework_dir="${framework_parent}/framework"
