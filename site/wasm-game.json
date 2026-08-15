@@ -15,6 +15,10 @@
   "identity": false,
   "graphics": false,
   "advanced": false,
+  "controller": {
+    "mode": "disabled"
+  },
+  "persistence": false,
   "theme": {
     "accent": "#dc5c24",
     "accentStrong": "#f4a261",

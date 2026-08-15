@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "framework": {
     "repository": "https://github.com/theodorecharles/wasm-game-framework.git",
-    "tag": "v0.7.6",
-    "version": "0.7.6",
-    "commit": "e617f090deaa294dacd033afa52c09f811a3e690"
+    "tag": "v0.9.1",
+    "version": "0.9.1",
+    "commit": "68bfbd1dbc0104084c7760e486b7437d4c7bb90e"
   },
   "officialSourceSdk": {
     "repository": "https://github.com/ValveSoftware/source-sdk-2013.git",

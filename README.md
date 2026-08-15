@@ -1,12 +1,14 @@
 # Source WASM
 
 Source WASM is a Source 1 engine-family browser project using
-wasm-game-framework 0.7.6 at immutable commit `e617f09`. Builds create an
+wasm-game-framework 0.9.1 at immutable commit `68bfbd1`. Builds create an
 isolated framework checkout at that exact release. Current status:
 **Still in development**.
 
 The current checkpoint runs a small diagnostic WebAssembly module and verifies
 the shared container-to-browser data path. It does **not** run Half-Life 2.
+Because no game engine starts, controller input and save/config persistence are
+explicitly disabled for this diagnostic variant.
 
 The official Valve Source SDK 2013 publishes game/mod code but depends on the
 installed Source SDK Base 2013 runtime. It does not publish a complete Source

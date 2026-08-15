@@ -5,13 +5,13 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 framework_source_dir="${SOURCE_WASM_FRAMEWORK_DIR:-${repo_root}/../wasm-game-framework}"
 repository="${SOURCE_WASM_IMAGE_REPO:-local/source-wasm}"
 tag="${SOURCE_WASM_IMAGE_TAG:-dev}"
-framework_image="${SOURCE_WASM_FRAMEWORK_IMAGE:-wasm-game-framework:0.7.6}"
+framework_image="${SOURCE_WASM_FRAMEWORK_IMAGE:-wasm-game-framework:0.9.1}"
 revision="$(git -C "${repo_root}" rev-parse --verify HEAD 2>/dev/null || printf local)"
 
 "${repo_root}/scripts/build-web.sh"
 framework_parent="$(mktemp -d -t source-wasm-framework-image.XXXXXX)"
 framework_dir="${framework_parent}/framework"
-git -C "${framework_source_dir}" worktree add --quiet --detach "${framework_dir}" e617f090deaa294dacd033afa52c09f811a3e690
+git -C "${framework_source_dir}" worktree add --quiet --detach "${framework_dir}" 68bfbd1dbc0104084c7760e486b7437d4c7bb90e
 cleanup() {
   git -C "${framework_source_dir}" worktree remove --force "${framework_dir}" >/dev/null 2>&1 || true
   rm -rf -- "${framework_parent}"
@@ -22,7 +22,7 @@ docker build --build-arg "FRAMEWORK_IMAGE=${framework_image}" --build-arg GAME_V
 docker build --build-arg "FRAMEWORK_IMAGE=${framework_image}" --build-arg GAME_VARIANT=hl2 --build-arg "VCS_REF=${revision}" -t "${repository}:hl2-${tag}" "${repo_root}"
 
 for image in "${repository}:${tag}" "${repository}:hl2-${tag}"; do
-  [[ "$(docker run --rm --entrypoint node "${image}" -p "require('/opt/wasm-game-framework/package.json').version")" == "0.7.6" ]]
+  [[ "$(docker run --rm --entrypoint node "${image}" -p "require('/opt/wasm-game-framework/package.json').version")" == "0.9.1" ]]
   [[ "$(docker run --rm --entrypoint sh "${image}" -c 'find /opt/game-site -type f | sort | sha256sum' | wc -l)" -eq 1 ]]
 done
 
