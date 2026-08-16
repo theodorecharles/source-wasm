@@ -1,0 +1,3005 @@
+{
+  "namespace": "source-wasm",
+  "version": "steam-legacy-hl2-v1",
+  "validator": {
+    "module": "/data-validator.mjs",
+    "export": "validateSourceOwnerFile",
+    "version": "source-owner-v1",
+    "maxReadBytes": 64,
+    "maxTotalReadBytes": 256
+  },
+  "variants": {
+    "hl2": {
+      "namespace": "source-hl2",
+      "version": "steam-legacy-hl2-v1",
+      "files": [
+        {
+          "key": "hl2-gameinfo.txt",
+          "name": "gameinfo.txt",
+          "path": "hl2/gameinfo.txt",
+          "size": 2861,
+          "sha256": "7325464fd4f4cb3853240afb3a99309b1ae58211d66878fe5a9578e23328687e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "gameinfo"
+            }
+          },
+          "magic": "\"GameInf"
+        },
+        {
+          "key": "hl2-steam.inf",
+          "name": "steam.inf",
+          "path": "hl2/steam.inf",
+          "size": 111,
+          "sha256": "555cb029471e0f9b120461605e432955e115b126a733ce0d263d9615df2a544c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "steam-inf"
+            }
+          },
+          "magic": "PatchVer"
+        },
+        {
+          "key": "hl2-hl2_pak_000.vpk",
+          "name": "hl2_pak_000.vpk",
+          "path": "hl2/hl2_pak_000.vpk",
+          "size": 18928376,
+          "sha256": "d58d43151e259a767997dc9a47fc75849f2230032afb40c14b495a23102e2bcb",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_pak_dir.vpk",
+          "name": "hl2_pak_dir.vpk",
+          "path": "hl2/hl2_pak_dir.vpk",
+          "size": 8187,
+          "sha256": "c7088c1b3cbd91fc61be3ff925301931736ff1fd038ab22e08793d030396a873",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_000.vpk",
+          "name": "hl2_misc_000.vpk",
+          "path": "hl2/hl2_misc_000.vpk",
+          "size": 113360771,
+          "sha256": "effaba6912645eaac810ee8a09ca723285898d98c64bd2eb35e84ca7c81c59eb",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_001.vpk",
+          "name": "hl2_misc_001.vpk",
+          "path": "hl2/hl2_misc_001.vpk",
+          "size": 112807742,
+          "sha256": "ac97b0fc28de7146dcfdd2ebc23ea04ce5c53539efe3b52ccc8e837753228658",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_002.vpk",
+          "name": "hl2_misc_002.vpk",
+          "path": "hl2/hl2_misc_002.vpk",
+          "size": 112474323,
+          "sha256": "2d151e36de4493f028b9bffaf6e9f8169ee15001cdeccf9698eedb8308911eaa",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_003.vpk",
+          "name": "hl2_misc_003.vpk",
+          "path": "hl2/hl2_misc_003.vpk",
+          "size": 115043847,
+          "sha256": "169d8b264c14960fead76ded8ac8728fb11bb2700602154a6e9fd0e2fb42c1f6",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_dir.vpk",
+          "name": "hl2_misc_dir.vpk",
+          "path": "hl2/hl2_misc_dir.vpk",
+          "size": 711691,
+          "sha256": "01943ce93cb9bedecba74bd00c1823ab8d7024259283823eb4dd9fe50aa2dd14",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_000.vpk",
+          "name": "hl2_textures_000.vpk",
+          "path": "hl2/hl2_textures_000.vpk",
+          "size": 105666364,
+          "sha256": "1e60034f8130cfabaf2ae6d2a4b7b2b920be7d81de8755ecea2b2284a934e61c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_001.vpk",
+          "name": "hl2_textures_001.vpk",
+          "path": "hl2/hl2_textures_001.vpk",
+          "size": 127879280,
+          "sha256": "4b7ab961773d91dcda10694501fcf4228415453060050992de335a99eb01073e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_002.vpk",
+          "name": "hl2_textures_002.vpk",
+          "path": "hl2/hl2_textures_002.vpk",
+          "size": 105595880,
+          "sha256": "dffc84b516342a99a94f1b9ca2d9e0fcb5531d3973833756afec602e7022ef58",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_003.vpk",
+          "name": "hl2_textures_003.vpk",
+          "path": "hl2/hl2_textures_003.vpk",
+          "size": 105556977,
+          "sha256": "42531a40382a2be3de6c2018e7b7848a38762264b4bc5b0a9b65e3ce46f17554",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_004.vpk",
+          "name": "hl2_textures_004.vpk",
+          "path": "hl2/hl2_textures_004.vpk",
+          "size": 107724088,
+          "sha256": "64933b5343971ae94c46df041333e90a8f35888f4ba8e8a813ae17d61b67d0ce",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_005.vpk",
+          "name": "hl2_textures_005.vpk",
+          "path": "hl2/hl2_textures_005.vpk",
+          "size": 107737529,
+          "sha256": "76e7363b0427a23984b91b8809d19e08ce1cdb18ec188b2ae61fcaf99529cfa9",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_006.vpk",
+          "name": "hl2_textures_006.vpk",
+          "path": "hl2/hl2_textures_006.vpk",
+          "size": 106419664,
+          "sha256": "e6aa96aacd6237cc6de04fa946a6e2b49f538e2290347ba4be508b61ac516c3c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_007.vpk",
+          "name": "hl2_textures_007.vpk",
+          "path": "hl2/hl2_textures_007.vpk",
+          "size": 106422095,
+          "sha256": "dbfa9c4a6ab756d844ea126b6bb00a29f2f885416355790a1f5ad69098786528",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_008.vpk",
+          "name": "hl2_textures_008.vpk",
+          "path": "hl2/hl2_textures_008.vpk",
+          "size": 110175163,
+          "sha256": "e19e4db9f6b1f7f6e3c62ce7613dd6cab59e41ba39c5ce306335bea03260c7be",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_009.vpk",
+          "name": "hl2_textures_009.vpk",
+          "path": "hl2/hl2_textures_009.vpk",
+          "size": 105574068,
+          "sha256": "799c9b2f6ec309aca007835bcefd1dd60b2a7e682d5e576d051a02a61fbbbc98",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_010.vpk",
+          "name": "hl2_textures_010.vpk",
+          "path": "hl2/hl2_textures_010.vpk",
+          "size": 107537442,
+          "sha256": "a922cc90341b707890c21796a62a461f4c982a3df083ccfc347375d9d2f21cf1",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_011.vpk",
+          "name": "hl2_textures_011.vpk",
+          "path": "hl2/hl2_textures_011.vpk",
+          "size": 105219355,
+          "sha256": "9cf989dd6244784049c8d01d5a2cda49851cfd36212bad1c1fa17abc8c7b57d6",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_dir.vpk",
+          "name": "hl2_textures_dir.vpk",
+          "path": "hl2/hl2_textures_dir.vpk",
+          "size": 218906,
+          "sha256": "5264311e5dec70b1f035c7d2ffd4d2ff1184da6d7fdef7e04891b017585057af",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_000.vpk",
+          "name": "hl2_sound_misc_000.vpk",
+          "path": "hl2/hl2_sound_misc_000.vpk",
+          "size": 133689947,
+          "sha256": "14302b4f9fff0596d6bc05fd55a2dce77ef052d85c5f7f3703f7f9a7836d4d85",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_001.vpk",
+          "name": "hl2_sound_misc_001.vpk",
+          "path": "hl2/hl2_sound_misc_001.vpk",
+          "size": 132906429,
+          "sha256": "4da18b8a88ae7046948d8d1bd1329712224fd5a3b64e8c9cb82865f407ae4c2f",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_002.vpk",
+          "name": "hl2_sound_misc_002.vpk",
+          "path": "hl2/hl2_sound_misc_002.vpk",
+          "size": 133066873,
+          "sha256": "394d1388d3ecb37255f0ad2cd4fe82f3f1577b1dcfb401be3610e6b1e8cf1327",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_dir.vpk",
+          "name": "hl2_sound_misc_dir.vpk",
+          "path": "hl2/hl2_sound_misc_dir.vpk",
+          "size": 113289,
+          "sha256": "6310abb7e633511bd2dbb910cb159fed1a5a4eef14b8534e4ec3ea8e9e494b6e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_000.vpk",
+          "name": "hl2_sound_vo_english_000.vpk",
+          "path": "hl2/hl2_sound_vo_english_000.vpk",
+          "size": 119762707,
+          "sha256": "3ddebde1ed28028a2c6b07f0f6c210731a5b6c6f8a4978f2422da92dafc63f33",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_001.vpk",
+          "name": "hl2_sound_vo_english_001.vpk",
+          "path": "hl2/hl2_sound_vo_english_001.vpk",
+          "size": 119927424,
+          "sha256": "89f2c54e48b0a0dc3199c5ae2e645c16261902528278e85b7d83022e3f2142d1",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_002.vpk",
+          "name": "hl2_sound_vo_english_002.vpk",
+          "path": "hl2/hl2_sound_vo_english_002.vpk",
+          "size": 119668742,
+          "sha256": "042625fb3a73b46ee8ef6444b462b6e4acd97853cf29324c8f98f68c2a9cc9b9",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_003.vpk",
+          "name": "hl2_sound_vo_english_003.vpk",
+          "path": "hl2/hl2_sound_vo_english_003.vpk",
+          "size": 120245738,
+          "sha256": "d68f281c4500847838c3f71091e576102d5996b45982ba8fa6c1735cb6cfb9df",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_004.vpk",
+          "name": "hl2_sound_vo_english_004.vpk",
+          "path": "hl2/hl2_sound_vo_english_004.vpk",
+          "size": 119467000,
+          "sha256": "b519c545c1f646344464f891345f69e55f17a6a96b98f877c79ff9908a9d5ae2",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_dir.vpk",
+          "name": "hl2_sound_vo_english_dir.vpk",
+          "path": "hl2/hl2_sound_vo_english_dir.vpk",
+          "size": 97210,
+          "sha256": "d049e603d4c919cebfd5d53188ac6b874d1ba84a23eb17f7803b570fbdd34d10",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "platform-platform_misc_000.vpk",
+          "name": "platform_misc_000.vpk",
+          "path": "platform/platform_misc_000.vpk",
+          "size": 4415062,
+          "sha256": "b21127fff8278f7a9c4000cf5b2a492b6d978d3ec11749bf0b345aca6128eeb1",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "platform-platform_misc_dir.vpk",
+          "name": "platform_misc_dir.vpk",
+          "path": "platform/platform_misc_dir.vpk",
+          "size": 14073,
+          "sha256": "2ce7a535aff137f0f7c49a7d73d6259e8c37c6db52008d9a092fefd17ecb4d5a",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        }
+      ]
+    },
+    "episodic": {
+      "namespace": "source-episodic",
+      "version": "steam-legacy-hl2-v1",
+      "files": [
+        {
+          "key": "hl2-gameinfo.txt",
+          "name": "gameinfo.txt",
+          "path": "hl2/gameinfo.txt",
+          "size": 2861,
+          "sha256": "7325464fd4f4cb3853240afb3a99309b1ae58211d66878fe5a9578e23328687e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "gameinfo"
+            }
+          },
+          "magic": "\"GameInf"
+        },
+        {
+          "key": "hl2-steam.inf",
+          "name": "steam.inf",
+          "path": "hl2/steam.inf",
+          "size": 111,
+          "sha256": "555cb029471e0f9b120461605e432955e115b126a733ce0d263d9615df2a544c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "steam-inf"
+            }
+          },
+          "magic": "PatchVer"
+        },
+        {
+          "key": "hl2-hl2_pak_000.vpk",
+          "name": "hl2_pak_000.vpk",
+          "path": "hl2/hl2_pak_000.vpk",
+          "size": 18928376,
+          "sha256": "d58d43151e259a767997dc9a47fc75849f2230032afb40c14b495a23102e2bcb",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_pak_dir.vpk",
+          "name": "hl2_pak_dir.vpk",
+          "path": "hl2/hl2_pak_dir.vpk",
+          "size": 8187,
+          "sha256": "c7088c1b3cbd91fc61be3ff925301931736ff1fd038ab22e08793d030396a873",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_000.vpk",
+          "name": "hl2_misc_000.vpk",
+          "path": "hl2/hl2_misc_000.vpk",
+          "size": 113360771,
+          "sha256": "effaba6912645eaac810ee8a09ca723285898d98c64bd2eb35e84ca7c81c59eb",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_001.vpk",
+          "name": "hl2_misc_001.vpk",
+          "path": "hl2/hl2_misc_001.vpk",
+          "size": 112807742,
+          "sha256": "ac97b0fc28de7146dcfdd2ebc23ea04ce5c53539efe3b52ccc8e837753228658",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_002.vpk",
+          "name": "hl2_misc_002.vpk",
+          "path": "hl2/hl2_misc_002.vpk",
+          "size": 112474323,
+          "sha256": "2d151e36de4493f028b9bffaf6e9f8169ee15001cdeccf9698eedb8308911eaa",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_003.vpk",
+          "name": "hl2_misc_003.vpk",
+          "path": "hl2/hl2_misc_003.vpk",
+          "size": 115043847,
+          "sha256": "169d8b264c14960fead76ded8ac8728fb11bb2700602154a6e9fd0e2fb42c1f6",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_dir.vpk",
+          "name": "hl2_misc_dir.vpk",
+          "path": "hl2/hl2_misc_dir.vpk",
+          "size": 711691,
+          "sha256": "01943ce93cb9bedecba74bd00c1823ab8d7024259283823eb4dd9fe50aa2dd14",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_000.vpk",
+          "name": "hl2_textures_000.vpk",
+          "path": "hl2/hl2_textures_000.vpk",
+          "size": 105666364,
+          "sha256": "1e60034f8130cfabaf2ae6d2a4b7b2b920be7d81de8755ecea2b2284a934e61c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_001.vpk",
+          "name": "hl2_textures_001.vpk",
+          "path": "hl2/hl2_textures_001.vpk",
+          "size": 127879280,
+          "sha256": "4b7ab961773d91dcda10694501fcf4228415453060050992de335a99eb01073e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_002.vpk",
+          "name": "hl2_textures_002.vpk",
+          "path": "hl2/hl2_textures_002.vpk",
+          "size": 105595880,
+          "sha256": "dffc84b516342a99a94f1b9ca2d9e0fcb5531d3973833756afec602e7022ef58",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_003.vpk",
+          "name": "hl2_textures_003.vpk",
+          "path": "hl2/hl2_textures_003.vpk",
+          "size": 105556977,
+          "sha256": "42531a40382a2be3de6c2018e7b7848a38762264b4bc5b0a9b65e3ce46f17554",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_004.vpk",
+          "name": "hl2_textures_004.vpk",
+          "path": "hl2/hl2_textures_004.vpk",
+          "size": 107724088,
+          "sha256": "64933b5343971ae94c46df041333e90a8f35888f4ba8e8a813ae17d61b67d0ce",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_005.vpk",
+          "name": "hl2_textures_005.vpk",
+          "path": "hl2/hl2_textures_005.vpk",
+          "size": 107737529,
+          "sha256": "76e7363b0427a23984b91b8809d19e08ce1cdb18ec188b2ae61fcaf99529cfa9",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_006.vpk",
+          "name": "hl2_textures_006.vpk",
+          "path": "hl2/hl2_textures_006.vpk",
+          "size": 106419664,
+          "sha256": "e6aa96aacd6237cc6de04fa946a6e2b49f538e2290347ba4be508b61ac516c3c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_007.vpk",
+          "name": "hl2_textures_007.vpk",
+          "path": "hl2/hl2_textures_007.vpk",
+          "size": 106422095,
+          "sha256": "dbfa9c4a6ab756d844ea126b6bb00a29f2f885416355790a1f5ad69098786528",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_008.vpk",
+          "name": "hl2_textures_008.vpk",
+          "path": "hl2/hl2_textures_008.vpk",
+          "size": 110175163,
+          "sha256": "e19e4db9f6b1f7f6e3c62ce7613dd6cab59e41ba39c5ce306335bea03260c7be",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_009.vpk",
+          "name": "hl2_textures_009.vpk",
+          "path": "hl2/hl2_textures_009.vpk",
+          "size": 105574068,
+          "sha256": "799c9b2f6ec309aca007835bcefd1dd60b2a7e682d5e576d051a02a61fbbbc98",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_010.vpk",
+          "name": "hl2_textures_010.vpk",
+          "path": "hl2/hl2_textures_010.vpk",
+          "size": 107537442,
+          "sha256": "a922cc90341b707890c21796a62a461f4c982a3df083ccfc347375d9d2f21cf1",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_011.vpk",
+          "name": "hl2_textures_011.vpk",
+          "path": "hl2/hl2_textures_011.vpk",
+          "size": 105219355,
+          "sha256": "9cf989dd6244784049c8d01d5a2cda49851cfd36212bad1c1fa17abc8c7b57d6",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_dir.vpk",
+          "name": "hl2_textures_dir.vpk",
+          "path": "hl2/hl2_textures_dir.vpk",
+          "size": 218906,
+          "sha256": "5264311e5dec70b1f035c7d2ffd4d2ff1184da6d7fdef7e04891b017585057af",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_000.vpk",
+          "name": "hl2_sound_misc_000.vpk",
+          "path": "hl2/hl2_sound_misc_000.vpk",
+          "size": 133689947,
+          "sha256": "14302b4f9fff0596d6bc05fd55a2dce77ef052d85c5f7f3703f7f9a7836d4d85",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_001.vpk",
+          "name": "hl2_sound_misc_001.vpk",
+          "path": "hl2/hl2_sound_misc_001.vpk",
+          "size": 132906429,
+          "sha256": "4da18b8a88ae7046948d8d1bd1329712224fd5a3b64e8c9cb82865f407ae4c2f",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_002.vpk",
+          "name": "hl2_sound_misc_002.vpk",
+          "path": "hl2/hl2_sound_misc_002.vpk",
+          "size": 133066873,
+          "sha256": "394d1388d3ecb37255f0ad2cd4fe82f3f1577b1dcfb401be3610e6b1e8cf1327",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_dir.vpk",
+          "name": "hl2_sound_misc_dir.vpk",
+          "path": "hl2/hl2_sound_misc_dir.vpk",
+          "size": 113289,
+          "sha256": "6310abb7e633511bd2dbb910cb159fed1a5a4eef14b8534e4ec3ea8e9e494b6e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_000.vpk",
+          "name": "hl2_sound_vo_english_000.vpk",
+          "path": "hl2/hl2_sound_vo_english_000.vpk",
+          "size": 119762707,
+          "sha256": "3ddebde1ed28028a2c6b07f0f6c210731a5b6c6f8a4978f2422da92dafc63f33",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_001.vpk",
+          "name": "hl2_sound_vo_english_001.vpk",
+          "path": "hl2/hl2_sound_vo_english_001.vpk",
+          "size": 119927424,
+          "sha256": "89f2c54e48b0a0dc3199c5ae2e645c16261902528278e85b7d83022e3f2142d1",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_002.vpk",
+          "name": "hl2_sound_vo_english_002.vpk",
+          "path": "hl2/hl2_sound_vo_english_002.vpk",
+          "size": 119668742,
+          "sha256": "042625fb3a73b46ee8ef6444b462b6e4acd97853cf29324c8f98f68c2a9cc9b9",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_003.vpk",
+          "name": "hl2_sound_vo_english_003.vpk",
+          "path": "hl2/hl2_sound_vo_english_003.vpk",
+          "size": 120245738,
+          "sha256": "d68f281c4500847838c3f71091e576102d5996b45982ba8fa6c1735cb6cfb9df",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_004.vpk",
+          "name": "hl2_sound_vo_english_004.vpk",
+          "path": "hl2/hl2_sound_vo_english_004.vpk",
+          "size": 119467000,
+          "sha256": "b519c545c1f646344464f891345f69e55f17a6a96b98f877c79ff9908a9d5ae2",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_dir.vpk",
+          "name": "hl2_sound_vo_english_dir.vpk",
+          "path": "hl2/hl2_sound_vo_english_dir.vpk",
+          "size": 97210,
+          "sha256": "d049e603d4c919cebfd5d53188ac6b874d1ba84a23eb17f7803b570fbdd34d10",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "platform-platform_misc_000.vpk",
+          "name": "platform_misc_000.vpk",
+          "path": "platform/platform_misc_000.vpk",
+          "size": 4415062,
+          "sha256": "b21127fff8278f7a9c4000cf5b2a492b6d978d3ec11749bf0b345aca6128eeb1",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "platform-platform_misc_dir.vpk",
+          "name": "platform_misc_dir.vpk",
+          "path": "platform/platform_misc_dir.vpk",
+          "size": 14073,
+          "sha256": "2ce7a535aff137f0f7c49a7d73d6259e8c37c6db52008d9a092fefd17ecb4d5a",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-gameinfo.txt",
+          "name": "gameinfo.txt",
+          "path": "episodic/gameinfo.txt",
+          "size": 3049,
+          "sha256": "37d647c2f5e1e3fae1caeb5906c23222cc055a311995dd74b3d2830bc6fc273a",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "gameinfo"
+            }
+          },
+          "magic": "\"GameInf"
+        },
+        {
+          "key": "episodic-ep1_pak_000.vpk",
+          "name": "ep1_pak_000.vpk",
+          "path": "episodic/ep1_pak_000.vpk",
+          "size": 110097021,
+          "sha256": "ee847eece668d9308106fad2c17c68464bb7c0416c606360516ef5ba9b4030b3",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-ep1_pak_001.vpk",
+          "name": "ep1_pak_001.vpk",
+          "path": "episodic/ep1_pak_001.vpk",
+          "size": 109998381,
+          "sha256": "2d7b30cdf322a810301c4abbf883e8e94abdca98306c20220f29754ce7f03440",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-ep1_pak_002.vpk",
+          "name": "ep1_pak_002.vpk",
+          "path": "episodic/ep1_pak_002.vpk",
+          "size": 111269402,
+          "sha256": "80d31116dba7fe482b61b06824e3a5e8468f54a9b9a1a41aebe72d0223162287",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-ep1_pak_003.vpk",
+          "name": "ep1_pak_003.vpk",
+          "path": "episodic/ep1_pak_003.vpk",
+          "size": 110497857,
+          "sha256": "822c7dfa2bcbe10917be0ca4708d862633e07d6b9e10a7daf94f803132b96ce0",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-ep1_pak_004.vpk",
+          "name": "ep1_pak_004.vpk",
+          "path": "episodic/ep1_pak_004.vpk",
+          "size": 110462449,
+          "sha256": "2ebef5848871bc8bc41073584139e6a39ec0c71a672f81ea17a4001790e2275c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-ep1_pak_005.vpk",
+          "name": "ep1_pak_005.vpk",
+          "path": "episodic/ep1_pak_005.vpk",
+          "size": 110576399,
+          "sha256": "edebc31503ad1601a24cf814f0d8f1a18d86aea8b79438715f669e45b747280e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-ep1_pak_006.vpk",
+          "name": "ep1_pak_006.vpk",
+          "path": "episodic/ep1_pak_006.vpk",
+          "size": 110455546,
+          "sha256": "8368d310b228ebc3c8e6aee6b4781cc0c6fbfb239fd5bfc057ca93a6b9c7bf36",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-ep1_pak_007.vpk",
+          "name": "ep1_pak_007.vpk",
+          "path": "episodic/ep1_pak_007.vpk",
+          "size": 110629370,
+          "sha256": "8dc75753a6c00fd106929c3776e7d92329ac2126326bfafd32bc2651f029b7a9",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-ep1_pak_008.vpk",
+          "name": "ep1_pak_008.vpk",
+          "path": "episodic/ep1_pak_008.vpk",
+          "size": 110453800,
+          "sha256": "56977931a3808101595817ca8799e2dc3f5dfef8d39008aa016a01f59af5a97c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-ep1_pak_009.vpk",
+          "name": "ep1_pak_009.vpk",
+          "path": "episodic/ep1_pak_009.vpk",
+          "size": 110163729,
+          "sha256": "7df169fd10170945f7e3602773c3be7211142f722ed62e170e195f3be98e00ec",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "episodic-ep1_pak_dir.vpk",
+          "name": "ep1_pak_dir.vpk",
+          "path": "episodic/ep1_pak_dir.vpk",
+          "size": 237254,
+          "sha256": "176d8cbafff75a2b7c7f61241180cbe1a43e6603a2eddcfc6f1fd348a2b26322",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        }
+      ]
+    },
+    "ep2": {
+      "namespace": "source-ep2",
+      "version": "steam-legacy-hl2-v1",
+      "files": [
+        {
+          "key": "hl2-gameinfo.txt",
+          "name": "gameinfo.txt",
+          "path": "hl2/gameinfo.txt",
+          "size": 2861,
+          "sha256": "7325464fd4f4cb3853240afb3a99309b1ae58211d66878fe5a9578e23328687e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "gameinfo"
+            }
+          },
+          "magic": "\"GameInf"
+        },
+        {
+          "key": "hl2-steam.inf",
+          "name": "steam.inf",
+          "path": "hl2/steam.inf",
+          "size": 111,
+          "sha256": "555cb029471e0f9b120461605e432955e115b126a733ce0d263d9615df2a544c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "steam-inf"
+            }
+          },
+          "magic": "PatchVer"
+        },
+        {
+          "key": "hl2-hl2_pak_000.vpk",
+          "name": "hl2_pak_000.vpk",
+          "path": "hl2/hl2_pak_000.vpk",
+          "size": 18928376,
+          "sha256": "d58d43151e259a767997dc9a47fc75849f2230032afb40c14b495a23102e2bcb",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_pak_dir.vpk",
+          "name": "hl2_pak_dir.vpk",
+          "path": "hl2/hl2_pak_dir.vpk",
+          "size": 8187,
+          "sha256": "c7088c1b3cbd91fc61be3ff925301931736ff1fd038ab22e08793d030396a873",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_000.vpk",
+          "name": "hl2_misc_000.vpk",
+          "path": "hl2/hl2_misc_000.vpk",
+          "size": 113360771,
+          "sha256": "effaba6912645eaac810ee8a09ca723285898d98c64bd2eb35e84ca7c81c59eb",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_001.vpk",
+          "name": "hl2_misc_001.vpk",
+          "path": "hl2/hl2_misc_001.vpk",
+          "size": 112807742,
+          "sha256": "ac97b0fc28de7146dcfdd2ebc23ea04ce5c53539efe3b52ccc8e837753228658",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_002.vpk",
+          "name": "hl2_misc_002.vpk",
+          "path": "hl2/hl2_misc_002.vpk",
+          "size": 112474323,
+          "sha256": "2d151e36de4493f028b9bffaf6e9f8169ee15001cdeccf9698eedb8308911eaa",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_003.vpk",
+          "name": "hl2_misc_003.vpk",
+          "path": "hl2/hl2_misc_003.vpk",
+          "size": 115043847,
+          "sha256": "169d8b264c14960fead76ded8ac8728fb11bb2700602154a6e9fd0e2fb42c1f6",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_misc_dir.vpk",
+          "name": "hl2_misc_dir.vpk",
+          "path": "hl2/hl2_misc_dir.vpk",
+          "size": 711691,
+          "sha256": "01943ce93cb9bedecba74bd00c1823ab8d7024259283823eb4dd9fe50aa2dd14",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_000.vpk",
+          "name": "hl2_textures_000.vpk",
+          "path": "hl2/hl2_textures_000.vpk",
+          "size": 105666364,
+          "sha256": "1e60034f8130cfabaf2ae6d2a4b7b2b920be7d81de8755ecea2b2284a934e61c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_001.vpk",
+          "name": "hl2_textures_001.vpk",
+          "path": "hl2/hl2_textures_001.vpk",
+          "size": 127879280,
+          "sha256": "4b7ab961773d91dcda10694501fcf4228415453060050992de335a99eb01073e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_002.vpk",
+          "name": "hl2_textures_002.vpk",
+          "path": "hl2/hl2_textures_002.vpk",
+          "size": 105595880,
+          "sha256": "dffc84b516342a99a94f1b9ca2d9e0fcb5531d3973833756afec602e7022ef58",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_003.vpk",
+          "name": "hl2_textures_003.vpk",
+          "path": "hl2/hl2_textures_003.vpk",
+          "size": 105556977,
+          "sha256": "42531a40382a2be3de6c2018e7b7848a38762264b4bc5b0a9b65e3ce46f17554",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_004.vpk",
+          "name": "hl2_textures_004.vpk",
+          "path": "hl2/hl2_textures_004.vpk",
+          "size": 107724088,
+          "sha256": "64933b5343971ae94c46df041333e90a8f35888f4ba8e8a813ae17d61b67d0ce",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_005.vpk",
+          "name": "hl2_textures_005.vpk",
+          "path": "hl2/hl2_textures_005.vpk",
+          "size": 107737529,
+          "sha256": "76e7363b0427a23984b91b8809d19e08ce1cdb18ec188b2ae61fcaf99529cfa9",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_006.vpk",
+          "name": "hl2_textures_006.vpk",
+          "path": "hl2/hl2_textures_006.vpk",
+          "size": 106419664,
+          "sha256": "e6aa96aacd6237cc6de04fa946a6e2b49f538e2290347ba4be508b61ac516c3c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_007.vpk",
+          "name": "hl2_textures_007.vpk",
+          "path": "hl2/hl2_textures_007.vpk",
+          "size": 106422095,
+          "sha256": "dbfa9c4a6ab756d844ea126b6bb00a29f2f885416355790a1f5ad69098786528",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_008.vpk",
+          "name": "hl2_textures_008.vpk",
+          "path": "hl2/hl2_textures_008.vpk",
+          "size": 110175163,
+          "sha256": "e19e4db9f6b1f7f6e3c62ce7613dd6cab59e41ba39c5ce306335bea03260c7be",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_009.vpk",
+          "name": "hl2_textures_009.vpk",
+          "path": "hl2/hl2_textures_009.vpk",
+          "size": 105574068,
+          "sha256": "799c9b2f6ec309aca007835bcefd1dd60b2a7e682d5e576d051a02a61fbbbc98",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_010.vpk",
+          "name": "hl2_textures_010.vpk",
+          "path": "hl2/hl2_textures_010.vpk",
+          "size": 107537442,
+          "sha256": "a922cc90341b707890c21796a62a461f4c982a3df083ccfc347375d9d2f21cf1",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_011.vpk",
+          "name": "hl2_textures_011.vpk",
+          "path": "hl2/hl2_textures_011.vpk",
+          "size": 105219355,
+          "sha256": "9cf989dd6244784049c8d01d5a2cda49851cfd36212bad1c1fa17abc8c7b57d6",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_textures_dir.vpk",
+          "name": "hl2_textures_dir.vpk",
+          "path": "hl2/hl2_textures_dir.vpk",
+          "size": 218906,
+          "sha256": "5264311e5dec70b1f035c7d2ffd4d2ff1184da6d7fdef7e04891b017585057af",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_000.vpk",
+          "name": "hl2_sound_misc_000.vpk",
+          "path": "hl2/hl2_sound_misc_000.vpk",
+          "size": 133689947,
+          "sha256": "14302b4f9fff0596d6bc05fd55a2dce77ef052d85c5f7f3703f7f9a7836d4d85",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_001.vpk",
+          "name": "hl2_sound_misc_001.vpk",
+          "path": "hl2/hl2_sound_misc_001.vpk",
+          "size": 132906429,
+          "sha256": "4da18b8a88ae7046948d8d1bd1329712224fd5a3b64e8c9cb82865f407ae4c2f",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_002.vpk",
+          "name": "hl2_sound_misc_002.vpk",
+          "path": "hl2/hl2_sound_misc_002.vpk",
+          "size": 133066873,
+          "sha256": "394d1388d3ecb37255f0ad2cd4fe82f3f1577b1dcfb401be3610e6b1e8cf1327",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_misc_dir.vpk",
+          "name": "hl2_sound_misc_dir.vpk",
+          "path": "hl2/hl2_sound_misc_dir.vpk",
+          "size": 113289,
+          "sha256": "6310abb7e633511bd2dbb910cb159fed1a5a4eef14b8534e4ec3ea8e9e494b6e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_000.vpk",
+          "name": "hl2_sound_vo_english_000.vpk",
+          "path": "hl2/hl2_sound_vo_english_000.vpk",
+          "size": 119762707,
+          "sha256": "3ddebde1ed28028a2c6b07f0f6c210731a5b6c6f8a4978f2422da92dafc63f33",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_001.vpk",
+          "name": "hl2_sound_vo_english_001.vpk",
+          "path": "hl2/hl2_sound_vo_english_001.vpk",
+          "size": 119927424,
+          "sha256": "89f2c54e48b0a0dc3199c5ae2e645c16261902528278e85b7d83022e3f2142d1",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_002.vpk",
+          "name": "hl2_sound_vo_english_002.vpk",
+          "path": "hl2/hl2_sound_vo_english_002.vpk",
+          "size": 119668742,
+          "sha256": "042625fb3a73b46ee8ef6444b462b6e4acd97853cf29324c8f98f68c2a9cc9b9",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_003.vpk",
+          "name": "hl2_sound_vo_english_003.vpk",
+          "path": "hl2/hl2_sound_vo_english_003.vpk",
+          "size": 120245738,
+          "sha256": "d68f281c4500847838c3f71091e576102d5996b45982ba8fa6c1735cb6cfb9df",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_004.vpk",
+          "name": "hl2_sound_vo_english_004.vpk",
+          "path": "hl2/hl2_sound_vo_english_004.vpk",
+          "size": 119467000,
+          "sha256": "b519c545c1f646344464f891345f69e55f17a6a96b98f877c79ff9908a9d5ae2",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "hl2-hl2_sound_vo_english_dir.vpk",
+          "name": "hl2_sound_vo_english_dir.vpk",
+          "path": "hl2/hl2_sound_vo_english_dir.vpk",
+          "size": 97210,
+          "sha256": "d049e603d4c919cebfd5d53188ac6b874d1ba84a23eb17f7803b570fbdd34d10",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "platform-platform_misc_000.vpk",
+          "name": "platform_misc_000.vpk",
+          "path": "platform/platform_misc_000.vpk",
+          "size": 4415062,
+          "sha256": "b21127fff8278f7a9c4000cf5b2a492b6d978d3ec11749bf0b345aca6128eeb1",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "platform-platform_misc_dir.vpk",
+          "name": "platform_misc_dir.vpk",
+          "path": "platform/platform_misc_dir.vpk",
+          "size": 14073,
+          "sha256": "2ce7a535aff137f0f7c49a7d73d6259e8c37c6db52008d9a092fefd17ecb4d5a",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-gameinfo.txt",
+          "name": "gameinfo.txt",
+          "path": "ep2/gameinfo.txt",
+          "size": 3238,
+          "sha256": "e20e8a65f7ce424674212bf1e8538ddeb2f43f5880d5684d344c6c78eac8194a",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "gameinfo"
+            }
+          },
+          "magic": "\"GameInf"
+        },
+        {
+          "key": "ep2-ep2_pak_000.vpk",
+          "name": "ep2_pak_000.vpk",
+          "path": "ep2/ep2_pak_000.vpk",
+          "size": 108234426,
+          "sha256": "cd534b779b3bf7621d1faec5a2cbb6a8ded7957091a93ea72cbed1902f6a1a4e",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_001.vpk",
+          "name": "ep2_pak_001.vpk",
+          "path": "ep2/ep2_pak_001.vpk",
+          "size": 116575653,
+          "sha256": "98207187a49d06e84a6faa5a856507149f7d5c4f4bd76142392640b2a467cb76",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_002.vpk",
+          "name": "ep2_pak_002.vpk",
+          "path": "ep2/ep2_pak_002.vpk",
+          "size": 108442772,
+          "sha256": "fefbb92290c103b8fe50a8151aeae63d640834bc520cbe9427070a0dad4fff63",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_003.vpk",
+          "name": "ep2_pak_003.vpk",
+          "path": "ep2/ep2_pak_003.vpk",
+          "size": 110979484,
+          "sha256": "b1ada70e8529192ba38bc1e37ed5ec8894d543c05f23643fb7913432b6c8c539",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_004.vpk",
+          "name": "ep2_pak_004.vpk",
+          "path": "ep2/ep2_pak_004.vpk",
+          "size": 108918038,
+          "sha256": "9305e393153e41b981e99b0a79d243785245d9f94ae1ff6baf48f9f1380d155f",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_005.vpk",
+          "name": "ep2_pak_005.vpk",
+          "path": "ep2/ep2_pak_005.vpk",
+          "size": 108280613,
+          "sha256": "ee65ffd286e0a430b9566576827ce4ce2ea45ace94da7a39632324144131442c",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_006.vpk",
+          "name": "ep2_pak_006.vpk",
+          "path": "ep2/ep2_pak_006.vpk",
+          "size": 106411076,
+          "sha256": "67ae15bbf9f9fc6b01212eb34937660a27eb662300ef23ce5cf736e65bac4b6b",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_007.vpk",
+          "name": "ep2_pak_007.vpk",
+          "path": "ep2/ep2_pak_007.vpk",
+          "size": 204943381,
+          "sha256": "7a4c5f29b83eb069a8d5bd33a4bd1d79e095a269ac8b81e7f1704758d2916eae",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_008.vpk",
+          "name": "ep2_pak_008.vpk",
+          "path": "ep2/ep2_pak_008.vpk",
+          "size": 104897985,
+          "sha256": "9f67cdd9e51d869b538915d0324b4bfb55f00fe4666e2d14246dc66be2502130",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_009.vpk",
+          "name": "ep2_pak_009.vpk",
+          "path": "ep2/ep2_pak_009.vpk",
+          "size": 110039484,
+          "sha256": "04a5d16d5e45745d2c861ffaad51b0178b913f9c990dbd94da505850d3d09c60",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_010.vpk",
+          "name": "ep2_pak_010.vpk",
+          "path": "ep2/ep2_pak_010.vpk",
+          "size": 107051088,
+          "sha256": "7918d0339b9df6d3d9a653bace5ab193f9c31d59e7a930b82b5d81156eb1c2f6",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_011.vpk",
+          "name": "ep2_pak_011.vpk",
+          "path": "ep2/ep2_pak_011.vpk",
+          "size": 108312457,
+          "sha256": "9af447c34acf6532f92fb8bd1f8da541ea575fc54527ae0958bb49a1a3643ef0",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_012.vpk",
+          "name": "ep2_pak_012.vpk",
+          "path": "ep2/ep2_pak_012.vpk",
+          "size": 109336044,
+          "sha256": "1637e8697123cba0c28e99fad6fec7db402ae9422cbbaf0551dece21f46f702b",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_013.vpk",
+          "name": "ep2_pak_013.vpk",
+          "path": "ep2/ep2_pak_013.vpk",
+          "size": 110056773,
+          "sha256": "87764ad9771d2e02c70a636516efb016f52d2cc77b018ad86fe0b334da71309a",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_014.vpk",
+          "name": "ep2_pak_014.vpk",
+          "path": "ep2/ep2_pak_014.vpk",
+          "size": 107120020,
+          "sha256": "29ce320561f61394a38e811ba376828f641d4ecb9d21ec5db09c973cc03f5814",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_015.vpk",
+          "name": "ep2_pak_015.vpk",
+          "path": "ep2/ep2_pak_015.vpk",
+          "size": 105333276,
+          "sha256": "9044be3595584032f3db85c9e5904391cbe0e08700774e34abe4b07378971969",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_016.vpk",
+          "name": "ep2_pak_016.vpk",
+          "path": "ep2/ep2_pak_016.vpk",
+          "size": 105529927,
+          "sha256": "8f54dd44438c352783a61d8bcc4e6e565184652c4535bbbc9be30ca154674a16",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_017.vpk",
+          "name": "ep2_pak_017.vpk",
+          "path": "ep2/ep2_pak_017.vpk",
+          "size": 105640165,
+          "sha256": "f57a90c1e0adb59092bafbf876bede2b5755de7cfe1401b1e14f1e78385c0eff",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_018.vpk",
+          "name": "ep2_pak_018.vpk",
+          "path": "ep2/ep2_pak_018.vpk",
+          "size": 105116474,
+          "sha256": "29c7c64f450ba1a5301f9fb6e025d213a354e2a6ac06b13fb37fb6d7f8822e22",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_019.vpk",
+          "name": "ep2_pak_019.vpk",
+          "path": "ep2/ep2_pak_019.vpk",
+          "size": 105151866,
+          "sha256": "b89a6855c33a902501860dcb25367487e980a349332c162ab388d1bbaaa6fafd",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_020.vpk",
+          "name": "ep2_pak_020.vpk",
+          "path": "ep2/ep2_pak_020.vpk",
+          "size": 105085598,
+          "sha256": "236ac72d98375e2786f60322d4b30486cfe8d4cf10e986e84910bf22a1e12c9d",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-data"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        },
+        {
+          "key": "ep2-ep2_pak_dir.vpk",
+          "name": "ep2_pak_dir.vpk",
+          "path": "ep2/ep2_pak_dir.vpk",
+          "size": 474399,
+          "sha256": "ce0147c6f8b1babf8659122058f59e8263d5003f4730329cb21b351069fc9f97",
+          "required": true,
+          "validator": {
+            "module": "/data-validator.mjs",
+            "export": "validateSourceOwnerFile",
+            "version": "source-owner-v1",
+            "policy": {
+              "kind": "vpk-dir"
+            }
+          },
+          "magic": [
+            52,
+            18,
+            170,
+            85
+          ]
+        }
+      ]
+    }
+  }
+}

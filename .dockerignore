@@ -1,5 +1,9 @@
 .git
 .audit
 .work
+.data
 data
 *.log
+node_modules
+vendor/source-engine
+build

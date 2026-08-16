@@ -1,0 +1,36 @@
+{
+  "name": "@wasm-game-framework/browser",
+  "version": "0.9.6",
+  "private": false,
+  "description": "Reusable launcher, data, persistence, controller, viewport, PWA, and lifecycle contract for browser-native games",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theodorecharles/wasm-game-framework.git"
+  },
+  "main": "dist/wasm-game-framework.js",
+  "exports": {
+    ".": "./dist/wasm-game-framework.js",
+    "./style.css": "./dist/wasm-game-framework.css",
+    "./server/lifecycle": "./server/lifecycle.js",
+    "./server/password-auth": "./server/password-auth.js",
+    "./server/provisioning": "./server/provisioning.js",
+    "./server/media-library": "./server/media-library.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "ADAPTER_RUNBOOK.md",
+    "ARCHITECTURE.md",
+    "SERVER_RUNBOOK.md",
+    "dist",
+    "server",
+    "scripts/check-game-package.js"
+  ],
+  "homepage": "https://theodorecharles.github.io/wasm-game-framework/",
+  "scripts": {
+    "test": "node test/shell.test.js && node test/document.test.js && node test/bootstrap-media.test.js && node test/runtime.test.js && node test/persistence.test.js && node test/persistence-worker.test.js && node test/durability.test.js && node test/controller.test.js && node test/package-contract.test.js && node test/lifecycle.test.js && node test/password-auth.test.js && node test/data-validator.test.js && node test/media-validator.test.js && node test/media-client.test.js && node test/provisioning.test.js && node test/media-library.test.js && node test/static-server.test.js && node test/media-library-static.test.js && node test/password-static.test.js && node test/base-image-package.test.js && node scripts/check-game-package.js test/fixtures/canonical-site && node test/create-wasm-game.test.js && node test/docs.test.js",
+    "docs:build": "node scripts/build-docs.js",
+    "docs:check": "node test/docs.test.js",
+    "create-wasm-game": "node packages/create-wasm-game/bin/create-wasm-game.js"
+  }
+}

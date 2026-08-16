@@ -2,58 +2,58 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-framework_source_dir="${SOURCE_WASM_FRAMEWORK_DIR:-${repo_root}/../wasm-game-framework}"
-web_dir="${SOURCE_WASM_WEB_DIR:-${repo_root}/build/web}"
-expected_version="0.9.2"
-expected_commit="53bc7e6eeef1ae35dcf3b25dea4e3ec0ab46726f"
-
-actual_version="$(git -C "${framework_source_dir}" show "${expected_commit}:package.json" | node -pe 'JSON.parse(fs.readFileSync(0)).version')"
-actual_commit="$(git -C "${framework_source_dir}" rev-parse 'v0.9.2^{}')"
-[[ "${actual_version}" == "${expected_version}" ]] || { echo "expected framework ${expected_version}, found ${actual_version}" >&2; exit 1; }
-[[ "${actual_commit}" == "${expected_commit}" ]] || { echo "framework v0.9.2 resolves to ${actual_commit}, expected ${expected_commit}" >&2; exit 1; }
-
-framework_parent="$(mktemp -d -t source-wasm-framework-checkout.XXXXXX)"
-framework_dir="${framework_parent}/framework"
-git -C "${framework_source_dir}" worktree add --quiet --detach "${framework_dir}" "${expected_commit}"
-cleanup() {
-  git -C "${framework_source_dir}" worktree remove --force "${framework_dir}" >/dev/null 2>&1 || true
-  rm -rf -- "${framework_parent}" "${metadata_dir:-}"
-}
-trap cleanup EXIT
+engine_root="${SOURCE_ENGINE_ROOT:-${repo_root}/vendor/source-engine}"
+web_dir="${SOURCE_WASM_WEB_DIR:-${repo_root}/web}"
+jobs="${SOURCE_WASM_JOBS:-$(nproc)}"
 
 if ! command -v emcc >/dev/null 2>&1; then
   emsdk_root="${SOURCE_WASM_EMSDK:-${EMSDK_DIR:-/home/ted/emsdk}}"
   [[ -f "${emsdk_root}/emsdk_env.sh" ]] || { echo "activate Emscripten or set SOURCE_WASM_EMSDK" >&2; exit 1; }
   export EMSDK_QUIET=1
+  # shellcheck disable=SC1091
   source "${emsdk_root}/emsdk_env.sh"
 fi
 
-rm -rf -- "${web_dir}"
-mkdir -p "${web_dir}"
+command -v emcc >/dev/null
+command -v em++ >/dev/null
 
-object_file="${web_dir}/source-boundary.o"
-wasm_linker="$(cd "$(dirname "$(command -v emcc)")/../bin" && pwd)/wasm-ld"
-[[ -x "${wasm_linker}" ]] || { echo "wasm-ld was not found beside the active Emscripten toolchain" >&2; exit 1; }
-emcc -c "${repo_root}/src/source_boundary.c" -Oz -nostdlib -o "${object_file}"
-"${wasm_linker}" "${object_file}" --no-entry \
-  --export=source_wasm_boundary_version \
-  --export=source_wasm_has_engine \
-  --strip-all \
-  -o "${web_dir}/source-boundary.wasm"
-rm -f -- "${object_file}"
+[[ -f "${engine_root}/wscript" ]] || { echo "missing engine tree at ${engine_root}" >&2; exit 1; }
+[[ -f "${engine_root}/ivp/ivp_physics/wscript" ]] || { echo "ivp is incomplete" >&2; exit 1; }
 
-install -m 0644 \
-  "${repo_root}/site/game-adapter.js" \
-  "${repo_root}/site/source-family.svg" \
-  "${repo_root}/site/wasm-game-data.json" \
-  "${repo_root}/site/wasm-game.json" \
-  "${repo_root}/site/SOURCE-NOTICES.txt" \
-  "${web_dir}/"
+export CC="${CC:-emcc}"
+export CXX="${CXX:-em++}"
+export AR="${AR:-emar}"
+export RANLIB="${RANLIB:-emranlib}"
+export EMSCRIPTEN=1
 
-metadata_dir="$(mktemp -d -t source-wasm-framework.XXXXXX)"
-"${framework_dir}/scripts/install-browser-package.sh" "${metadata_dir}" copy >/dev/null
-install -m 0644 "${metadata_dir}/wasm-game-framework.json" "${web_dir}/wasm-game-framework.json"
+mkdir -p "${engine_root}/.wasm-build" "${web_dir}"
+cd "${engine_root}"
+chmod +x ./waf || true
 
-node "${framework_dir}/scripts/check-game-package.js" "${web_dir}"
-"${repo_root}/scripts/test-static.sh" "${web_dir}"
-printf 'Built Source WASM development checkpoint at %s\n' "${web_dir}"
+python3 ./waf configure \
+  -T release \
+  --disable-warns \
+  --togles \
+  --emscripten \
+  --build-games hl2 \
+  --prefix="${engine_root}/.wasm-build/prefix" \
+  -o "${engine_root}/.wasm-build"
+
+python3 ./waf build -j "${jobs}"
+
+factory_wasm="$(find "${engine_root}/.wasm-build" -name 'source-engine.wasm' | head -n 1)"
+factory_js="$(find "${engine_root}/.wasm-build" -name 'source-engine.js' | head -n 1)"
+if [[ -z "${factory_js}" || -z "${factory_wasm}" ]]; then
+  echo "engine factory was not produced" >&2
+  find "${engine_root}/.wasm-build" \( -name '*.js' -o -name '*.wasm' -o -name 'source-engine' \) | head
+  exit 1
+fi
+
+install -m 0644 "${factory_js}" "${web_dir}/source-engine.js"
+install -m 0644 "${factory_wasm}" "${web_dir}/source-engine.wasm"
+if [[ -f "${factory_js%.js}.worker.js" ]]; then
+  install -m 0644 "${factory_js%.js}.worker.js" "${web_dir}/source-engine.worker.js"
+fi
+
+node "${repo_root}/vendor/wasm-game-framework/scripts/check-game-package.js" "${web_dir}"
+printf 'Built Source engine factory at %s\n' "${web_dir}/source-engine.js"

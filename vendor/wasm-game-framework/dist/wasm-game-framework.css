@@ -1,0 +1,395 @@
+@font-face {
+  font-family: "Modern DOS 8x16";
+  src: local("ModernDOS8x16"), local("Modern DOS 8x16");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --wasm-game-framework-accent: #c4a35a;
+  --wasm-game-framework-accent-strong: #f0d48a;
+  --wasm-game-framework-panel: rgba(16, 12, 8, 0.96);
+  --wasm-game-framework-field: #16110b;
+  --wasm-game-framework-text: #e6d7b0;
+  --wasm-game-framework-muted: #b8a57a;
+  --wasm-game-framework-danger: #e07060;
+  --wasm-game-framework-border: #6b542c;
+  --wasm-game-framework-background-image: none;
+  --wasm-game-framework-background-position: center;
+  --wasm-game-framework-background-size: cover;
+}
+
+html.wasm-game-framework,
+html.wasm-game-framework body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+  color: var(--wasm-game-framework-text);
+  font-family: "Liberation Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+.wasm-game-framework *,
+.wasm-game-framework *::before,
+.wasm-game-framework *::after {
+  box-sizing: border-box;
+}
+
+.wasm-game-framework [hidden] {
+  display: none !important;
+}
+
+.wasm-game-framework [data-shell-launcher],
+.wasm-game-framework [data-shell-loading] {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 40;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+  padding: clamp(0.75rem, 3vw, 2rem) !important;
+  overflow: auto;
+  background-color: #0b0b0b;
+  background-image:
+    linear-gradient(rgb(5 4 3 / 42%), rgb(5 4 3 / 68%)),
+    var(--wasm-game-framework-background-image),
+    radial-gradient(ellipse at center, #2a2114 0%, #0b0b0b 70%);
+  background-position: center, var(--wasm-game-framework-background-position), center;
+  background-size: cover, var(--wasm-game-framework-background-size), cover;
+  background-repeat: no-repeat;
+}
+
+.wasm-game-framework [data-shell-loading] {
+  z-index: 50;
+}
+
+.wasm-game-framework [data-shell-card] {
+  width: min(30rem, 94vw) !important;
+  max-width: 100% !important;
+  margin: auto !important;
+  padding: clamp(1.25rem, 4vw, 2.2rem) !important;
+  border: 1px solid var(--wasm-game-framework-border) !important;
+  border-radius: 0 !important;
+  background: var(--wasm-game-framework-panel) !important;
+  box-shadow: 0 0 0 1px #000, 0 18px 40px rgb(0 0 0 / 55%) !important;
+  text-align: left;
+}
+
+.wasm-game-framework [data-shell-card="wide"] {
+  width: min(54rem, 94vw) !important;
+}
+
+.wasm-game-framework [data-shell-kicker] {
+  margin: 0 0 0.2rem !important;
+  color: var(--wasm-game-framework-accent) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.wasm-game-framework [data-shell-game-icon] {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 0.85rem;
+  object-fit: contain;
+}
+
+.wasm-game-framework [data-shell-game-icon][data-shell-pixelated="true"] {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.wasm-game-framework [data-shell-title],
+.wasm-game-framework [data-shell-card] > h1 {
+  margin: 0 0 0.55rem !important;
+  color: var(--wasm-game-framework-accent-strong) !important;
+  font-size: clamp(1.55rem, 5vw, 2.15rem) !important;
+  line-height: 1.1;
+  letter-spacing: 0.035em;
+}
+
+.wasm-game-framework [data-shell-card] p {
+  margin: 0 0 1.15rem;
+  color: var(--wasm-game-framework-muted);
+  line-height: 1.45;
+}
+
+.wasm-game-framework [data-shell-card] label {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.8rem 0;
+  color: #c4b48a;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.wasm-game-framework [data-shell-controller],
+.wasm-game-framework [data-shell-media-library] {
+  margin: 0.8rem 0;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #534526;
+  background: rgb(6 5 4 / 35%);
+}
+
+.wasm-game-framework [data-shell-controller] label,
+.wasm-game-framework [data-shell-media-library] label {
+  margin: 0;
+}
+
+.wasm-game-framework [data-shell-controller-mode],
+.wasm-game-framework [data-shell-controller-status] {
+  min-height: 0;
+  margin: 0.5rem 0 0 !important;
+  font-size: 0.78rem;
+}
+
+.wasm-game-framework [data-shell-media-status] {
+  min-height: 0;
+  margin: 0.5rem 0 0 !important;
+  font-size: 0.78rem;
+}
+
+.wasm-game-framework [data-shell-controller-mode] {
+  color: var(--wasm-game-framework-accent) !important;
+}
+
+.wasm-game-framework [data-shell-card] input,
+.wasm-game-framework [data-shell-card] select,
+.wasm-game-framework [data-shell-card] button,
+.wasm-game-framework [data-shell-card] textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 0.68rem 0.75rem;
+  border: 1px solid #7a6234;
+  border-radius: 0;
+  background: var(--wasm-game-framework-field);
+  color: #f3e6c4;
+  font: inherit;
+}
+
+.wasm-game-framework [data-shell-card] input[type="checkbox"],
+.wasm-game-framework [data-shell-card] input[type="radio"] {
+  width: auto;
+  accent-color: var(--wasm-game-framework-accent);
+}
+
+.wasm-game-framework [data-shell-card] button {
+  border-color: var(--wasm-game-framework-accent);
+  background: #3c2c12;
+  color: #f4e4b2;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.wasm-game-framework [data-shell-card] button:hover,
+.wasm-game-framework [data-shell-card] button:focus-visible {
+  background: #5a4218;
+}
+
+.wasm-game-framework [data-shell-card] button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+/* The runtime state machine chooses exactly one pointer policy. Captured
+ * gameplay, native-cursor menus, and pointer-free menus hide the host pointer;
+ * browser-cursor menus explicitly restore it after capture release. */
+.wasm-game-framework[data-shell-host-cursor="hidden"] [data-shell-canvas] {
+  cursor: none !important;
+}
+
+.wasm-game-framework[data-shell-host-cursor="visible"] [data-shell-canvas] {
+  cursor: default !important;
+}
+
+.wasm-game-framework [data-shell-advanced] {
+  margin: 0.9rem 0;
+  padding: 0.72rem 0.8rem 0.8rem;
+  border: 1px solid #534526;
+  background: rgb(6 5 4 / 35%);
+}
+
+.wasm-game-framework [data-shell-advanced] summary {
+  color: #c4b48a;
+  cursor: pointer;
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.wasm-game-framework [data-shell-advanced][open] summary {
+  margin-bottom: 0.8rem;
+}
+
+.wasm-game-framework [data-shell-status] {
+  min-height: 1.4rem;
+  margin: 0.75rem 0 0 !important;
+  color: var(--wasm-game-framework-muted) !important;
+  white-space: pre-wrap;
+}
+
+.wasm-game-framework [data-shell-error] {
+  color: var(--wasm-game-framework-danger) !important;
+}
+
+.wasm-game-framework [data-shell-console] {
+  width: 100%;
+  max-height: min(19rem, 42vh);
+  margin-top: 0.9rem;
+  padding: 0.7rem 0.8rem;
+  overflow: auto;
+  border: 2px solid #8c969e;
+  background: #354b61;
+  color: #d8dadd;
+  font: 400 16px/16px "Modern DOS 8x16", "Liberation Mono", monospace;
+  font-synthesis: none;
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+
+.wasm-game-framework [data-shell-runtime] {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10;
+  display: grid !important;
+  place-items: center;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  background: #000 !important;
+  box-shadow: none !important;
+}
+
+.wasm-game-framework [data-shell-runtime][hidden] {
+  display: none !important;
+}
+
+.wasm-game-framework [data-shell-canvas] {
+  display: block !important;
+  flex: none !important;
+  width: var(--wasm-game-framework-canvas-width, 100%) !important;
+  height: var(--wasm-game-framework-canvas-height, 100%) !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: #000 !important;
+  outline: none !important;
+  object-fit: fill !important;
+}
+
+.wasm-game-framework [data-shell-canvas][data-shell-pixelated="true"] {
+  image-rendering: pixelated !important;
+}
+
+.wasm-game-framework [data-shell-canvas][data-shell-pixelated="false"] {
+  image-rendering: auto !important;
+}
+
+.wasm-game-framework [data-shell-runtime-controls] {
+  position: fixed;
+  z-index: 20;
+  top: 0.7rem;
+  right: 0.7rem;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.wasm-game-framework [data-shell-runtime-controls] button {
+  width: auto;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid rgb(196 163 90 / 60%);
+  background: rgb(18 15 10 / 76%);
+  color: #f4e4b2;
+}
+
+.wasm-game-framework [data-shell-overlay] {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 78%);
+}
+
+.wasm-game-framework [data-shell-drop] {
+  padding: 1rem;
+  border: 1px dashed #8c7544;
+  color: var(--wasm-game-framework-muted);
+  text-align: center;
+}
+
+.wasm-game-framework [data-shell-drop][data-dragging="true"] {
+  border-color: var(--wasm-game-framework-accent-strong);
+  background: rgb(90 66 24 / 30%);
+}
+
+.wasm-game-framework [data-shell-list] {
+  max-height: 11rem;
+  overflow: auto;
+  padding-left: 1.4rem;
+  font: 0.78rem/1.4 ui-monospace, monospace;
+}
+
+/* Keep this after every display declaration: shell surfaces use !important
+   layout rules, so the native hidden state must win the cascade. */
+.wasm-game-framework [data-shell-launcher][hidden],
+.wasm-game-framework [data-shell-loading][hidden],
+.wasm-game-framework [data-shell-runtime][hidden],
+.wasm-game-framework [data-shell-overlay][hidden] {
+  display: none !important;
+}
+
+.wasm-game-framework [data-shell-pixelated="true"] {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+@media (max-width: 560px) {
+  .wasm-game-framework [data-shell-card] {
+    padding: 1.2rem !important;
+  }
+}
+[data-shell-desktop-notice] {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 6px;
+  background: rgba(8,16,28,.92);
+  color: #fff;
+  font: 14px/1.35 system-ui, sans-serif;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,.45);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  html[data-shell-engine-state="provisioning"] [data-shell-desktop-notice],
+  html[data-shell-engine-state="launcher"] [data-shell-desktop-notice] { display: block; }
+}

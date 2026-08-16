@@ -1,40 +1,199 @@
-# Source-family continuation runbook
+# Source Wasm — implementation runbook
 
-Status: **Still in development**
+This is the working contract for **Source Wasm** on WASM Game Framework
+**@wasm-game-framework/browser@0.9.6**, plus the Linux compile and data
+combination that actually runs Half-Life 2 on this machine.
 
-## What exists
+Read the canonical framework docs before editing the adapter. Do not invent a
+second website.
 
-- A canonical wasm-game-framework 0.9.2 suite/locked deployment contract.
-- Exact required-file validation into `/data` and browser IndexedDB caching.
-- A visible original diagnostic WASM module proving the toolchain and boundary.
-- Static, Docker, HTTP range, PWA, security-header, and inaccessible-`/data`
-  tests.
-- No downstream HTML, CSS, service worker, or web manifest.
+## Canonical docs
 
-## Exact blocker
+1. https://theodorecharles.github.io/wasm-game-framework/llms.txt
+2. https://theodorecharles.github.io/wasm-game-framework/build-a-game.html
+3. `vendor/wasm-game-framework/ADAPTER_RUNBOOK.md`
+4. https://theodorecharles.github.io/wasm-game-framework/adapter.html
+5. https://theodorecharles.github.io/wasm-game-framework/game-data.html
 
-Valve's official Source SDK 2013 contains game/mod code and expects a separately
-installed Source SDK Base 2013 runtime. It is not the full Source engine. The
-audited hl2-webxr reference is leak-derived and cannot be reused. Accordingly,
-the audited sources do not provide a complete engine to compile into an HL2
-browser client. Counter-Strike: Source also lacks published game code in Source
-SDK 2013.
+## Declared policy (`web/wasm-game.json`)
 
-## Safe continuation
+| Field | Value |
+| --- | --- |
+| id | `source-wasm` |
+| title | Source Wasm |
+| status copy | **Still in development** |
+| displayMode | `dynamic` |
+| menuCursor | `browser` |
+| nativeManaged | `false` (SDL / the engine owns the window) |
+| syncBackbuffer | `true` |
+| pointer | 1280×720, `contain`, lock on |
+| fullscreen | `true` |
+| controller.mode | `disabled` |
+| persistence | `/save/{variant}` |
+| media library | no |
+| dedicated server stub | no |
+| framework pin | `@wasm-game-framework/browser@0.9.6` |
 
-1. Keep `source-lock.json` immutable unless a source update is independently
-   audited and pinned.
-2. Accept a full engine only with documented redistribution permission and
-   provenance that does not descend from leaked Source code.
-3. Add the engine as a native-source Emscripten build; do not import another
-   project's web shell or compiled binary.
-4. Expand the exact game-data manifest to the complete runtime set only after
-   the engine proves what it reads.
-5. Preserve the framework data client and mount downloaded cached entries into
-   Emscripten FS; never place retail files in public build output.
-6. Add real HL2 SP/MP variants only when each launches. Add CS:S only when the
-   engine and CS:S game-code provenance are documented.
-7. Keep product status at **Still in development** until a repeatable browser
-   runtime test justifies **Live**.
+Do not author downstream `index.html`, CSS, a service worker, or a web manifest.
 
-Do not submit any changes upstream.
+## The engine
+
+This repo does **not** vendor the leaked tree. The person running Docker (or
+`scripts/prepare.sh`) mounts their own 2017 ToGL/TOGLES tree at
+`SOURCE_ENGINE_ROOT` / `/inputs/source`. `scripts/apply-source-patches.mjs`
+applies `patches/` onto that tree, then `scripts/build-web.sh` compiles it.
+
+Do not contact or submit changes upstream. Do not add the engine tree to Git.
+
+### What the Desktop compile had to fix
+
+The dump had no `.git`, so `ivp`, `thirdparty`, and `lib` were empty. Those
+were cloned. Missing game/engine files (HL2 client/server, lzma, ToGL headers,
+minimp3, Sixense, other headers) were filled from nillerusr/source-engine.
+
+Other host issues that already bit once:
+
+- `/tmp` is a 32G tmpfs. Do not clone or extract large trees there.
+- Waf wants `python`; this machine has `python3`.
+- `libsdl2-dev` is not installed. Desktop headers lived under `.deps/` (not
+  vendored here).
+- SDL2 needed an unversioned `.so` symlink.
+- `sound.h` had to be on the include path.
+- Deleting Waf’s lock mid-build requires a reconfigure.
+
+**Proven native build:** debug Linux x86_64, `--disable-warns`, 2202/2202
+tasks. Install next to the game data; **do not** install Steam’s `hl2/bin`.
+
+Wayland dies immediately. Use X11:
+
+```bash
+cd /home/ted/Desktop/source-engine-master
+SDL_VIDEODRIVER=x11 ./hl2_launcher -game hl2 -windowed -w 1280 -h 720 -novid
+```
+
+That combination is the one that “works like perfectly.”
+
+### Browser compile
+
+`scripts/build-web.sh` configures the same tree with `--emscripten --togles`
+and installs `web/source-engine.js` + `web/source-engine.wasm`. The factory
+must be `createSourceEngineModule` with `noInitialRun`. Generated JS/WASM stay
+out of Git.
+
+A recognisable in-browser GameUI has **not** been proven. Status stays
+**Still in development** until `readEngineState()` reports `menu` or
+`gameplay` from native truth.
+
+## The only working game-data combination
+
+Owner data is built at run time from **two user-provided** sets:
+
+1. **2014 GOTY / Collectors ISO** — maps, materials, fonts, sounds (loose).
+2. **Steam `steam_legacy`** — shader `.vcs` version 6 (and `flashlight_border`).
+
+`scripts/combine-owner-data.mjs` overlays (2) onto (1) and strips `*.dll` plus
+`glshaders.cfg`.
+
+Steam → Half-Life 2 → Properties → Betas → **`steam_legacy`**
+(Pre-20th Anniversary). Proven install: app **220**, build **12694556**.
+
+| Data | What happens |
+| --- | --- |
+| Steam **current** (20th anniversary) | Too-new shaders, GorDIN fonts, maps ~3× heavier. Garbled text, cyan error materials, window dies after a chapter load. |
+| Collector’s Edition DVD | 2014 SteamPipe cabs, **not** a 2004 GoldSrc dump. Maps/materials/fonts are the right era. `.vcs` shaders are **version 1**. Engine wants **6** → abort on `vertexlit_and_unlit_generic_vs20`. |
+| Steam **`steam_legacy`** | Shaders, maps, textures, fonts match. This is the working set. |
+
+**Do not mix eras.** Failed experiments:
+
+1. Anniversary VPKs + 2014 maps → cyan (2024 shaders on 2014 geometry).
+2. DVD shaders on this engine → version 1 vs 6 abort.
+3. Overlaying only Steam Legacy `shaders/` onto DVD art → same class of mismatch.
+
+If data is wrong, replace the **whole** `hl2` + `platform` content with
+`steam_legacy`. Keep our compiled binaries. Do not cherry-pick art.
+
+### Files this engine must not load
+
+Never mount or copy these into owner data:
+
+- `hl2/glshaders.cfg` — leftover Steam GL cache; crashes the loader
+- `*.dll` — Windows plugins. Proven noise:
+  - `../bin/trackerui.dll` (Friends)
+  - `../bin/serverbrowser.dll`
+- Steam / DVD `hl2/bin` (`client.dll`, `engine.dll`, Miles, …)
+- Anniversary `hl2_complete` GorDIN-only schemes as the primary scheme
+
+Linux is case-sensitive: `HALFLIFE2.ttf` must exist with that name. Tahoma /
+Verdana should resolve to DejaVu, not a broken Noto substitute.
+
+ToGL video settings that survived: windowed **1280×720**, no MSAA, no HDR, no
+vsync.
+
+### Owner-data policy
+
+`scripts/generate-game-data.mjs` walks the Steam `steam_legacy` tree and writes
+`web/wasm-game-data.json`. Allowlist is gameinfo, steam.inf, and the HL2 /
+platform (and episode) VPKs that actually exist. `glshaders.cfg` and `*.dll`
+are rejected.
+
+Local default root:
+
+`/home/ted/.steam/debian-installation/steamapps/common/Half-Life 2`
+
+Override with `HL2_OWNER_ROOT` or `WASM_GAME_DATA_ROOT`. Docker: mount that
+tree on `/data:ro`. Never bake VPKs into the image.
+
+## Adapter rules
+
+Work in this order. A canvas screenshot is not done.
+
+1. Native source is the user-provided tree (`SOURCE_ENGINE_ROOT`). Apply
+   `patches/` first. Do not copy another project’s generated JS/WASM.
+2. Compile the `noInitialRun` factory. Replace `createNativeModule()` only
+   with that factory.
+3. Attach persistence **before** `callMain`.
+4. Mount owner files from `/game-data/files`. Large VPKs are range-lazy.
+   Sync XHR from the document must use
+   `overrideMimeType('text/plain; charset=x-user-defined')`.
+   `responseType=arraybuffer` on a sync XHR throws. Worker + `Atomics.wait`
+   on the main thread hangs Firefox.
+5. `readEngineState()` is native truth only. Valid states: `launcher`,
+   `loading`, `menu`, `gameplay`, `paused`, `debrief`, `crashed`. Gameplay
+   only after a real controllable snapshot.
+6. The framework is the only caller of `requestPointerLock()`.
+7. Sanitize the player name. Re-apply it after native configs load.
+8. Controller polling stays off until `controller.mode` changes.
+
+## Forbidden
+
+- Downstream `index.html`, `*.css`, service worker, `*.webmanifest`
+- Committing or imaging retail Valve VPKs, maps, materials, or `.vcs`
+- Inferring `gameplay` from a timeout, canvas visibility, or the last click
+- Calling `requestPointerLock()` / `exitPointerLock()` from the adapter
+- Mixing anniversary, DVD, and `steam_legacy` content
+- Mounting `glshaders.cfg` or Windows `.dll` plugins
+- Marking unreached behavior as passed
+- Contacting upstream
+
+## Commands
+
+```bash
+npm test
+node scripts/generate-game-data.mjs
+npm start
+# http://127.0.0.1:8088/?game=hl2
+
+# native (Desktop tree, already proven)
+cd /home/ted/Desktop/source-engine-master
+SDL_VIDEODRIVER=x11 ./hl2_launcher -game hl2 -windowed -w 1280 -h 720 -novid
+
+# browser factory (not yet a finished game)
+./scripts/build-web.sh
+
+WASM_GAME_FRAMEWORK_ROOT=/path/to/wasm-game-framework npm run build:image
+```
+
+## Acceptance
+
+Follow section 11 of the adapter runbook. Compiling, linking, or reaching a
+menu is not a finished adapter. A failed native start is not a playable game.

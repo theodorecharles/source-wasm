@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#111827">
+  <title>WASM Game</title>
+  <link rel="icon" href="data:,">
+  <link rel="manifest" href="/app.webmanifest">
+  <link rel="stylesheet" href="/shared-shell/wasm-game-framework.css">
+</head>
+<body>
+  <main id="launcher" data-shell-launcher>
+    <form id="launcher-form" data-shell-card autocomplete="on">
+      <img id="game-icon" data-shell-game-icon width="64" height="64" alt="" hidden>
+      <p id="game-kicker" data-shell-kicker></p>
+      <h1 id="game-title" data-shell-title>Loading game…</h1>
+      <p id="game-description" hidden></p>
+
+      <label id="variant-row" data-shell-variant hidden>
+        Game
+        <select id="game-variant"></select>
+      </label>
+
+      <section id="data-provisioning" data-shell-provisioning hidden>
+        <p id="data-instructions">Install the required game data into this container.</p>
+        <button id="choose-directory" type="button">Choose game folder</button>
+        <button id="choose-files" type="button">Choose game files</button>
+        <input id="game-files" type="file" multiple hidden>
+        <input id="game-directory" type="file" webkitdirectory multiple hidden>
+      </section>
+
+      <section id="media-library" data-shell-media-library hidden>
+        <label id="media-entry-row">
+          Media
+          <select id="media-entry" data-shell-media-entry></select>
+        </label>
+        <button id="add-media-directory" type="button">Add media folder</button>
+        <button id="add-media-files" type="button">Add media files</button>
+        <input id="media-files" type="file" multiple hidden>
+        <input id="media-directory" type="file" webkitdirectory multiple hidden>
+        <p id="media-status" data-shell-media-status role="status"></p>
+      </section>
+
+      <label id="setup-token-row" data-shell-setup-token-field hidden>
+        Setup token
+        <input id="setup-token" data-shell-setup-token type="password" autocomplete="off">
+      </label>
+
+      <label id="password-row" data-shell-password hidden>
+        Game password
+        <input id="game-password" data-shell-password-input type="password" autocomplete="current-password">
+      </label>
+      <button id="unlock" type="button" data-shell-password-submit hidden>Unlock</button>
+
+      <label id="identity-row" data-shell-identity>
+        Player name
+        <input id="player-name" data-shell-player-name maxlength="32" autocomplete="nickname" spellcheck="false">
+      </label>
+
+      <section id="controller-row" data-shell-controller hidden>
+        <label>
+          Controller
+          <select id="game-controller" data-shell-controller-select>
+            <option value="disabled">Disabled</option>
+            <option value="auto">Auto-detect</option>
+          </select>
+        </label>
+        <p id="controller-mode" data-shell-controller-mode></p>
+        <p id="controller-status" data-shell-controller-status role="status"></p>
+      </section>
+
+      <details id="advanced-settings" data-shell-advanced>
+        <summary>Advanced settings</summary>
+        <label id="graphics-row" data-shell-graphics>
+          Graphics profile
+          <select id="graphics-profile" data-shell-quality-profile></select>
+        </label>
+        <label id="fps-row" data-shell-graphics>
+          Target frame rate
+          <select id="fps-target" data-shell-target-fps></select>
+        </label>
+        <label id="dynamic-row" data-shell-graphics>
+          <span><input id="dynamic-quality" data-shell-dynamic-quality type="checkbox"> Dynamic quality</span>
+        </label>
+      </details>
+
+      <label id="fullscreen-row" data-shell-fullscreen>
+        <span><input id="launch-fullscreen" data-shell-launch-fullscreen type="checkbox"> Launch fullscreen</span>
+      </label>
+
+      <button id="play" type="submit" data-shell-data-ready hidden disabled>Play</button>
+      <p id="status" data-shell-status role="status" hidden></p>
+      <p id="error" data-shell-error role="alert" hidden></p>
+    </form>
+  </main>
+
+  <section id="loading" data-shell-loading hidden aria-live="polite">
+    <div data-shell-card="wide">
+      <p id="loading-kicker" data-shell-kicker></p>
+      <h1 id="loading-title" data-shell-title>Starting game…</h1>
+      <p id="loading-status" data-shell-status>Preparing browser runtime…</p>
+      <progress id="loading-progress" max="100" value="0"></progress>
+      <p id="loading-detail"></p>
+      <pre id="loading-console" data-shell-console role="log"></pre>
+    </div>
+  </section>
+
+  <section id="runtime" data-shell-runtime hidden>
+    <canvas id="game-canvas" data-shell-canvas tabindex="0"></canvas>
+  </section>
+
+  <script src="/wasm-game-config.js"></script>
+  <script src="/shared-shell/wasm-game-framework.js"></script>
+  <script src="/shared-shell/wasm-game-bootstrap.js"></script>
+</body>
+</html>
